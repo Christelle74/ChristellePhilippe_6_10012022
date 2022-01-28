@@ -1,4 +1,6 @@
 @import url("photographer.css");
+@import url("dropDown.css");
+@import url("galery.css");
 
 body {
   font-family: "DM Sans", sans-serif;
@@ -36,22 +38,24 @@ p {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin-top: 100px;
+  justify-items: center;
 }
 
 .photographer_section article {
-  justify-self: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-items: space-around;
+  align-items: center;
+  width: 100%;
 }
+
 
 .photographer_section article h2 {
   color: #d3573c;
   font-size: 36px;
 }
 
-.photographer_section article img {
+.photographer_picture {
   height: 200px;
   width: 200px;
   border-radius: 50%;
@@ -59,17 +63,17 @@ p {
   object-fit: cover;
 }
 
-.photographer_section article .villePays {
+.photographer_city {
   font-size: 13px;
   color: #901c1c;
 }
 
-.photographer_section article .tag {
+.photographer_tag {
   font-size: 10px;
   color: black;
 }
 
-.photographer_section article .prix {
+.photographer_price {
   font-size: 9px;
   color: #525252;
 }

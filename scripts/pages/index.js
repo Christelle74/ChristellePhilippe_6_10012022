@@ -1,4 +1,23 @@
-async function getPhotographers() {
+const photographersIndexContainer = document.querySelector(
+  ".photographer_section"
+);
+console.log(photographersIndexContainer);
+
+fetch("/data/photographers.json")
+  .then((resp) => resp.json())
+  .then((data) => {
+    let Photographers = data.photographers;
+    console.log(Photographers);
+
+    photographersIndexContainer.innerHTML = Photographers.map((photographer) =>
+      new PhotographerCard(photographer).getPhotographerIndexCard()
+    ).join("");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+/*async function getPhotographers() {
   // on récupère le tableau de données dans le json par le fetch
   let photographers = [];
 
@@ -8,14 +27,10 @@ async function getPhotographers() {
       photographers = data.photographers;
       //console.log(data);
     });
+  console.log(photographers);
   return {
     photographers,
   };
-  // et bien retourner le tableau photographers seulement une fois
-
-  /* return {
-       photographers: [...photographers, ...photographers, ...photographers],
-      };*/
 }
 
 async function displayData(photographers) {
@@ -34,4 +49,4 @@ async function init() {
   displayData(photographers);
 }
 
-init();
+init();*/
