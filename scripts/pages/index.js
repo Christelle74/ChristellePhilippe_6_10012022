@@ -13,7 +13,7 @@ const photographersDisplay = async () => {
   <article>
     <a  href="./photographer.html?id=${photographer.id}">
       <div role="figure">
-        <img class="photographer_picture" src="/assets/photographers/${photographer.portrait}" aria-label="${photographer.alt} alt="${photographer.alt}">
+        <img class="photographer_picture" src="./assets/photographers/${photographer.portrait}" aria-label="${photographer.alt} alt="${photographer.alt}">
         <h2>${photographer.name}</h2>
       </div>
     </a>
