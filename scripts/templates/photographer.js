@@ -1,5 +1,5 @@
 // Build the photographers section, call the 'filtertags' function and the 'passer au contenu' button
-class PhotographerCard {
+/*class PhotographerCard {
   constructor(photographer) {
     this._photographer = photographer;
   }
@@ -53,7 +53,7 @@ class PhotographerCard {
 				<h2>Contacter <br> ${this._photographer.name}</h2>
 		`;
   }
-}
+}*/
 
 /*
 //creation du profil photographe sur la page photographer
