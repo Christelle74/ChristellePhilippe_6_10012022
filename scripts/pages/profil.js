@@ -25,7 +25,7 @@ const photographerProfilDisplay = async () => {
   
   
       <div>
-      <img class="photograph_picture" src="/assets/photographers/${photographer.portrait}" aria-label="${photographer.alt}" alt="${photographer.alt}">
+      <img class="photograph_picture" src="./assets/photographers/${photographer.portrait}" aria-label="${photographer.alt}" alt="${photographer.alt}">
       </div>
   
   
