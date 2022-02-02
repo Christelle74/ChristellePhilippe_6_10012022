@@ -6,7 +6,7 @@ const id = urlSearch.get("id");
 //console.log(id);
 
 const fetchPhotographers = async () => {
-  await fetch("/data/photographers.json")
+  await fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => (photographers = data.photographers));
   //.then(() => console.log(userData));
