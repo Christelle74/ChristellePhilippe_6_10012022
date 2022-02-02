@@ -14,7 +14,7 @@ const fetchPhotographers = async () => {
 };
 
 const fetchMedias = async () => {
-  await fetch("/data/photographers.json")
+  await fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
       medias = data.media;
