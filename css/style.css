@@ -1,6 +1,9 @@
 @import url("photographer.css");
-@import url("dropDown.css");
-@import url("galery.css");
+
+@import url("gallery.css");
+@import url("lightbox.css");
+@import url("contactForm.css");
+/*@import url("modal.css");*/
 
 body {
   font-family: "DM Sans", sans-serif;
@@ -34,21 +37,23 @@ p {
 
 /*section grille de photographes */
 .photographer_section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 100px;
-  justify-items: center;
 }
 
 .photographer_section article {
-  display: flex;
-  flex-direction: column;
-  justify-items: space-around;
-  align-items: center;
-  width: 100%;
-}
+  flex: 1 0 25%;
 
+  min-width: 250px;
+  margin: 10px;
+  padding: 20px 20px 0;
+  text-align: center;
+  position: relative;
+  min-height: 260px;
+  display: grid;
+  overflow: hidden;
+}
 
 .photographer_section article h2 {
   color: #d3573c;

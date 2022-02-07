@@ -1,36 +1,40 @@
-class Media {
-  constructor(data) {
-    this._id = data.id;
-    this._photographer = { id: data.photographerId };
-    this._title = data.title;
-    this._alt = data.alt;
-    this._likes = data.likes;
-    this._date = data.date;
-    this._price = data.price;
+/*class mediaCard {
+  constructor(media) {
+    this._media = media;
+    this._id = media.id;
+    this._photographer = { id: media.photographerId };
+    this._title = media.title;
+    this._likes = media.likes;
+    this._date = media.date;
+    this._price = media.price;
     this._type = "media";
   }
-}
-/*const exemple = { title: "blabla", price: "50€" };
-const mediaExemple = new Media(exemple);
-console.log(mediaExemple);*/
+}*/
 
-class MediaImage extends Media {
+class MediaCardImage /*extends mediaCard*/ {
   constructor(data) {
-    super(data);
-    this._image = data.image;
-    this._type = "image";
+    //super(media);
+    this.id = data.id;
+    this.image = data.image;
+    this.title = data.title;
+    this.photographerId = data.photographerId;
+    this.likes = data.likes;
+    this.date = data.date;
+    this.price = data.price;
+    this.type = "image";
   }
+
   createMediaCard() {
     return `
         <figure class="media">
             <div  class="image">
-                <img  src="/assets/images/ ${this._photographer},${this._image},${this._alt},${this._title}></img>
+                <img  src="./assets/images/${this.photographerId}/${this.image}" alt="${this.title}"></img>
             </div>
             <figcaption class="details">
-                <h2 class="titre">${this._title}</h2>
+                <h2 class="titre">${this.title}</h2>
                 <div class="likes">
-                    <p class="like-coeur">${this._likes}</p>
-                    <span data-id="${this._id}" class="heart"> <i class="fas fa-heart"></i></span>
+                    <p class="like-coeur">${this.likes}</p>
+                    <span data-id="${this.id}" class="heart"> <i class="fas fa-heart"></i></span>
                 </div>
             </figcaption>
         </figure>`;
@@ -41,39 +45,42 @@ class MediaImage extends Media {
 const mediaExemple = new MediaImage(exemple);
 console.log(mediaExemple);*/
 
-class MediaVideo extends Media {
+class MediaCardVideo /*extends mediaCard*/ {
   constructor(data) {
-    super(data);
-    this._video = data.video;
-    this._type = "video";
+    // super(media);
+    // this.id = data.id;
+    //this.video = data.video;
+    this.title = data.title;
+    this.photographerId = data.photographerId;
+    this.likes = data.likes;
+    this.date = data.date;
+    this.price = data.price;
+    this.type = "video";
   }
   createMediaCard() {
     return `
         <div class="media">
             <video class="video">
-                <source src="/assets/images/${this._photographer},${this._video}" type="${this._type},${this._alt},${this._title}">
+                <source src="./assets/images/${this.photographerId}/${this.video}"  alt="${this.title}">
             </video>
             <div class="details">
-                <h2 class="titre">${this._title}</h2>
+                <h2 class="titre">${this.title}</h2>
                 <div class="likes">
-                    <p class="like-coeur">${this._likes}</p>
-                    <span data-id="${this._id}" class="heart"> <i class="fas fa-heart"></i></span>
+                    <p class="like-coeur">${this.likes}</p>
+                    <span data-id="${this.id}" class="heart"> <i class="fas fa-heart"></i></span>
                 </div>
             </div>
         </div>`;
   }
 }
 
-/*const exemple = { title: "blabla", price: "50€" };
-const mediaExemple = new MediaVideo(exemple);
-console.log(mediaExemple);*/
-
-function mediaFactory(data) {
-  if (this._type === "image") {
-    return new MediaImage(data);
-  } else if (this._type === "video") {
-    return new MediaVideo(data);
-  } else {
-    throw "unknown media type";
+class mediaFactory {
+  constructor(type, data) {
+    if (type === "image") {
+      return new MediaCardImage(data);
+    } else {
+      type === "video";
+      return new MediaCardVideo(data);
+    }
   }
 }

@@ -15,27 +15,30 @@ const photographerProfilDisplay = async () => {
   //console.log(photographer.id);
 
   const photographerProfil = `
-          <div role="text" class="photograph_profil">
+  <div class="photograph-profil">
+      <div  class="photograph_details" role="text" >
           <h2>${photographer.name}</h1>
           <p class="photograph_city">${photographer.city}, ${photographer.country}</p>
           <p class="photograp_tag">${photographer.tagline}</p>
       </div>
   
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <button id="contact" class="contact_button" onclick="launchModal()">Contactez-moi</button>
   
   
       <div>
       <img class="photograph_picture" src="./assets/photographers/${photographer.portrait}" aria-label="${photographer.alt}" alt="${photographer.alt}">
       </div>
+  </div>
+      <div class="tri"> 
+          <label class= "dropbox" for="trier">Trier par</label>
+          <select class="btn-select" name="select" id="select">
+              <option value="popularité">Popularité</option>
+              <option value="date">Date</option>
+              <option value="titre">Titre</option>
+          </select>
+      </div> 
   
-  
-      <label for="trier">Trier par</label>
-      <select class="btn-select" name="select" id="select">
-          <option value="popularité">Popularité</option>
-          <option value="date">Date</option>
-          <option value="titre">Titre</option>
-      </select>
-  `;
+    `;
 
   if (photographer) {
     photographerProfilContainer.innerHTML = photographerProfil;

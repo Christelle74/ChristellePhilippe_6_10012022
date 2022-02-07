@@ -18,12 +18,6 @@ const fetchMedias = async () => {
     .then((res) => res.json())
     .then((data) => {
       medias = data.media;
-      //console.log(medias);
-
-      //recherche des medias par photographe -----------------------------------
-      let currentPhotographerMedia = medias.filter(
-        (media) => media.photographerId === parseInt(id)
-      );
-      console.log(currentPhotographerMedia);
+      // console.log(medias);
     });
 };

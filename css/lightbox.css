@@ -1,0 +1,71 @@
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e5e5e5;
+  z-index: 10;
+  animation: lightboxIn 0.5s;
+}
+
+.lightbox_close {
+  background: url(/assets/icons/times-solid.svg) center center / 100% 100%;
+  width: 42px;
+  height: 42px;
+  top: 5%;
+  right: 14px;
+  z-index: 12;
+}
+
+.lightbox button {
+  position: fixed;
+  transition: 0.3s;
+  cursor: pointer;
+  border: none;
+  text-indent: -3000px;
+}
+
+.lightbox_next,
+.lightbox_prev {
+  width: 48px;
+  height: 30px;
+  background: url(/assets/icons/chevron-right-solid.svg) center center / 100%
+    100%;
+  top: 50%;
+  right: 14px;
+  margin-top: -14px;
+  z-index: 11;
+}
+
+.lightbox_prev {
+  background: url(/assets/icons/chevron-left-solid.svg) center center / 100%
+    100%;
+  right: auto;
+  left: 14px;
+}
+
+.lightbox button:hover {
+  transform: scale(1.5);
+}
+.lightbox_container img {
+  max-width: 100%;
+  height: auto;
+  animation: lightboxIn 0.5s;
+}
+.lightbox_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0 50px;
+}
+
+@keyframes lightboxIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

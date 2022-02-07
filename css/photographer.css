@@ -2,26 +2,44 @@
   display: none;
 }
 main {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .photograph-header {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.photograph-profil {
+  display: flex;
+  flex-wrap: wrap;
+
   background-color: #fafafa;
   border-radius: 5px;
   height: 300px;
   width: auto;
   margin: 50px 100px;
-  display: flex;
-  flex-direction: row;
+
   justify-content: space-around;
   align-items: center;
 }
 
-.photograph_profil {
+.photograph_details {
+  min-width: 250px;
+  /*flex: 1 0 25%;
+  margin: 10px;
+  padding: 20px 20px 0;
+  text-align: center;display: grid;*/
+  position: relative;
+  min-height: 260px;
+
+  overflow: hidden;
   width: 360px;
   height: 200px;
 }
 
-.photograph_profil h2 {
+.photograph_details h2 {
   color: #d3573c;
   font-size: 64px;
   margin: 0;
@@ -61,56 +79,47 @@ main {
   cursor: pointer;
 }
 
-.modal {
+/*dropdown---------------------------------------------*/
+.tri {
+  position: absolute;
+  min-height: 260px;
+  width: 360px;
+  height: 200px;
+  left: 8%;
+  top: 15%;
+}
+
+.dropbox {
+  position: absolute;
+  width: 74px;
+  height: 23px;
+  left: 0px;
+  top: 350px;
+  line-height: 23px;
+  font-family: DM Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+
+  color: #000000;
+}
+
+.btn-select {
+  background-color: #901c1c;
+  border-color: transparent;
   border-radius: 5px;
-  background-color: #db8876;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-}
+  color: white;
+  font-size: 18px;
+  min-height: 50px;
+  padding: 5px 10px;
+  width: 170px;
+  height: 10px;
 
-.modal header {
-  justify-content: space-between;
-  width: 100%;
-}
+  position: absolute;
+  width: 170px;
+  height: 69px;
+  left: 90px;
+  top: 325px;
 
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-form label {
-  color: #312e2e;
-  font-size: 36px;
-}
-
-form div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: self-start;
-  margin-bottom: 26px;
-}
-
-form input {
-  width: 100%;
-  height: 68px;
-  border: none;
-  border-radius: 5px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
