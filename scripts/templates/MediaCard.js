@@ -1,48 +1,100 @@
-const mediaDisplay = async () => {
-  //async function getMedias() {
+const mediasContainer = document.querySelector(".galleryContainer");
+//console.log(medias);//dans la console fait apparaitre l'array des medias
+
+const displayGallery = async () => {
   await fetchMedias();
-  //console.log(medias); //dans la console fait apparaitre l'array des medias
 
   //recherche de l'id du photographe dans l'url-----------
   const idPhotographer = window.location.search.slice(4);
-  console.log(idPhotographer);
-
-  //displayGallery(PhotographerMedias);
-};
-
-const displayGallery = async () => {
-  await mediaDisplay();
-  const mediasContainer = document.querySelector(".galleryContainer");
-  console.log(mediasContainer);
+  //console.log(idPhotographer);
 
   //recherche des medias par photographe -----------------------------------
   const PhotographerMedias = medias.filter(
-    (media) => media.photographerId === parseInt(id)
+    (media) => media.photographerId === parseInt(idPhotographer)
   );
-  console.log(PhotographerMedias);
+  //console.log(PhotographerMedias); //array des medias du photographe
 
-  /* mediasContainer.innerHTML = PhotographerMedias.map(
-    (media) => `
-    <figure class="media">
-    <div  class="image">
-        <img  src="./assets/images/${media.photographerId}/${media.image}" alt="${media.title}"></img>
-    </div>
-    <figcaption class="details">
-        <h2 class="titre">${media.title}</h2>
-        <div class="likes">
-            <p class="like-coeur">${media.likes}</p>
-            <span data-id="${media.id}" class="heart"> <i class="fas fa-heart"></i></span>
-        </div>
-    </figcaption>
-</figure>`
-  ).join("");*/
+  PhotographerMedias.forEach((media) => {
+    const card = document.createElement("article");
+    mediasContainer.appendChild(card);
 
-  medias.forEach((media) => {
     const Template = new mediaFactory(media);
-    console.log(Template);
+    //console.log(Template); //affiche dans la console chaque média
 
-    mediasContainer.innerHTML = Template.createMediaCard();
+    card.innerHTML = Template.createMediaCard();
   });
 };
 
 displayGallery();
+
+/*let Likes = await this.photographesApi.getLikes();
+let nbLikeTotal = 0;
+Likes.forEach((like) => {
+  if (like.photographerId == idURL) {
+    nbLikeTotal = nbLikeTotal + like.likes;
+  }
+});
+let LikeTemplate = new PhotographeLike(nbLikeTotal);
+this.profilLikes.append(LikeTemplate.createLikesProfil());
+
+/*function displayFooterLikes(idPhotographer) {
+  const photographerBody = document.querySelector("body");
+  const footerModel = new photographerProfilDisplay(idPhotographer);
+  photographerBody.appendChild(footerModel.createCounterFooter());
+  totalCuntLikes();
+}*/
+/*handleLikeButton() {
+  const that = this
+  
+  this.$wrapper
+      .querySelector('.heart')
+      .addEventListener('click', function() {
+          if (this.classList.contains('wished')) {
+              this.classList.remove('wished')
+              that.WishListSubject.fire('DEC')
+          } else {
+              this.classList.add('wished')
+              that.WishListSubject.fire('INC')
+          }
+      })
+}*/
+/*function userReloadLikes() {
+  let $totalLikesElements = 
+  let likeSum = 0;
+  $totalLikesElements.forEach(function (like) {
+    let likeUnit = Number(like.textContent);
+    likeSum += likeUnit;
+  });
+  return likeSum;
+}*/
+
+/*const mediaLikes = document.querySelectorAll(".heart");
+console.log(mediaLikes);
+mediaLikes.addEventListener("click", incrementeCounter);
+
+let sumOfLike = 0;
+function incrementeCounter() {
+  updateDisplayCounts(++sumOfLike);
+}
+
+function updateDisplayCounts(like) {
+  document.querySelector(".like-coeur").innerHTML = like;
+}
+
+/*Voila un code qui devrait marcher :
+
+<script type="text/javascript">
+var compteur = 0;
+function incremente(){
+compteur ++;
+document.getElementById("compteur").firstChild.nodeValue = compteur;
+}
+</script>
+
+<a id="compteur" href="javascript:incremente()">0</a>*/
+
+/*mediaLikes.forEach((like)=> {
+  like.addEventListener("click",(e)=> {
+    blabla
+  })
+})*/

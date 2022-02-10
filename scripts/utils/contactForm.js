@@ -4,38 +4,48 @@ const lastName = document.querySelector("input[name=last]");
 const email = document.querySelector("input[name=email]");
 const message = document.querySelector("input[name=message]");
 
-const contactButton = document.querySelector("onclick"); //bouton contactez-moi
+const openModal = document.getElementById("openForm"); //bouton contactez-moi
 const contactModal = document.querySelector("#contact_modal"); //corp du formulaire
-const modal = document.querySelector(".modal");
+const form = document.querySelector(".form");
 const closeModal = document.querySelector(".closeModal"); //croix de fermeture
-console.log(contactButton);
+const formulaire = document.querySelector("#formulaire");
+//console.log(openModal);
 
-//const closeModal = document.querySelector("onclick");
-//onclick="closeModal()
-const submitForm = document.querySelector("validation");
-//submitForm.addEventListener("click", globalValidation);
+const submitForm = document.querySelector("#validation");
 
-//ouverture du modal via le bouton contactez-moi
-//contactButton.addEventListener("click", launchModal);
+//console.log(submitForm);
+
+const photographeConstactName = document.querySelector(
+  "#photographerContactName"
+);
+console.log(photographeConstactName);
+photographeConstactName.innerHTML = "Contactez-moi"; //+${photographer.name};
+
+//openModal.addEventListener("click", launchModal);
 
 function launchModal() {
-  //const modal = document.getElementById("contact_modal");
   contactModal.style.display = "block";
   let inputs = Array.from(document.querySelectorAll(".input-validate")); //effacer le contour vert des champs
   inputs.forEach((input) => input.classList.remove("input-validate"));
-  modal.style.display = "block"; // apparition du corps du formulaire
+  //form.style.display = "block"; // apparition du corps du formulaire
 }
 
-// fermeture du formulaire avec la X
-closeModal.addEventListener("click", hideModal);
-
-function hideModal() {
-  contactModal.style.display = "none";
-}
+// fermeture du formulaire
+closeModal.addEventListener("click", manualCloseDelay); // par la croix
+submitForm.addEventListener("submit", autoCloseDelay); //par le bouton envoyer
 
 //fermeture du formulaire
 function closeFormModal() {
   contactModal.style.display = "none";
+}
+
+// delais de fermeture
+let delayToClose;
+function manualCloseDelay() {
+  delayToClose = setTimeout(closeFormModal, 1000);
+}
+function autoCloseDelay() {
+  delayToClose = setTimeout(closeFormModal, 4000);
 }
 
 //Evenements
@@ -47,7 +57,7 @@ message.addEventListener("input", messageValidation);
 //validation du champ prénom
 function firstValidation() {
   let regexName = /^[A-Za-zÀ-ÿ-']{2,20}$/;
-  console.log(firstName.value);
+  // console.log(firstName.value);
 
   if (firstName.value === "") {
     firstName.classList.add("input-error");
@@ -70,7 +80,7 @@ function firstValidation() {
 //vérification de la bonne saisie du champ nom avec regex
 function lastValidation() {
   let regexName = /^[A-Za-zÀ-ÿ-']{2,20}$/;
-  console.log(lastName.value);
+  //console.log(lastName.value);
 
   if (lastName.value.trim() === "") {
     lastName.classList.add("input-error");
@@ -115,7 +125,7 @@ function mailValidation() {
 }
 
 function messageValidation() {
-  console.log(message.value);
+  //console.log(message.value);
 
   if (message.value === "") {
     message.classList.add("input-error");
@@ -131,7 +141,7 @@ function messageValidation() {
 }
 //validation du formulaire global-------------------------------------
 //evenement sur le submit et on prévient l'envoi en cas d'erreur
-modal.addEventListener("submit", (e) => {
+formulaire.addEventListener("submit", (e) => {
   e.preventDefault();
   globalValidation();
 });
@@ -158,10 +168,21 @@ function globalValidation() {
   }
 
   if (validation === true) {
-    modalError.innerHTML = ""; // si le formulaire est bien rempli, pas de message d'erreur
-    contactModal.reset(); // le formulaire s'efface
+    modalError.innerHTML = "Votre message a bien été reçu, merci."; // si le formulaire est bien rempli, pas de message d'erreur
+
     contactModal.style.display = "none"; // Ferme la modale si OK
-    modalError.innerHTML = "Votre message a bien été reçu, merci.";
+    const returnValues = {
+      prenom: document.querySelector("#first").value,
+      nom: document.querySelector("#last").value,
+      email: document.querySelector("#email").value,
+      message: document.querySelector("#message").value,
+    };
+    console.log(returnValues);
+    localStorage.setItem("returnValues", JSON.stringify(returnValues)); //stockage des données dans le localStorage
+    console.log(localStorage);
+
+    autoCloseDelay();
+    formulaire.reset(); // le formulaire s'efface
   } else {
     modalError.innerHTML = "Veuillez renseigner tous les champs"; // Afficher les erreurs si pas OK
   }

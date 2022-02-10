@@ -8,8 +8,12 @@ const photographerProfilDisplay = async () => {
   await fetchPhotographers(); // on va chercher les données de la fetchApi medias
 
   //recherche des photographes par leur id et affichage du profil-------------
+  const urlSearch = new URLSearchParams(window.location.search);
+  const photographId = urlSearch.get("id");
+  //console.log(photographId);
+
   const photographer = photographers.find(
-    (photographer) => photographer.id === parseInt(id)
+    (photographer) => photographer.id === parseInt(photographId)
   );
   //console.log(photographer);
   //console.log(photographer.id);
@@ -22,7 +26,7 @@ const photographerProfilDisplay = async () => {
           <p class="photograp_tag">${photographer.tagline}</p>
       </div>
   
-      <button id="contact" class="contact_button" onclick="launchModal()">Contactez-moi</button>
+      <button id="openForm" class="contact_button" onclick="launchModal()">Contactez-moi</button>
   
   
       <div>
@@ -37,6 +41,15 @@ const photographerProfilDisplay = async () => {
               <option value="titre">Titre</option>
           </select>
       </div> 
+
+  
+  <footer>
+      <div class="counter"> 
+          <span class="total_likes">0</span>
+          <i class="fas fa-heart"></i>
+          <span class="total_prices">${photographer.price} € / jour</span>
+      </div> 
+  </footer>
   
     `;
 

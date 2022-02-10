@@ -10,7 +10,7 @@
   height: 100%;
 }
 
-.modal {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,17 +19,17 @@
   margin: auto;
 }
 
-.modal header {
+.form header {
   justify-content: space-between;
   width: 100%;
   margin-top: 0;
 }
 
-.modal header img {
+.form header img {
   cursor: pointer;
 }
 
-.modal header h2 {
+.form header h2 {
   font-size: 64px;
   font-weight: normal;
   text-align: center;

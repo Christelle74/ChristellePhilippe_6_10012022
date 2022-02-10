@@ -1,26 +1,30 @@
 .galleryContainer {
-  background-color: cadetblue;
   display: flex;
   flex-wrap: wrap;
   margin-top: 100px;
   height: 500px;
 }
 
-.media {
-  flex: 1 0 25%;
+.galleryContainer article {
+  /*flex: 1 0 25%;*/
 
   min-width: 250px;
   margin: 10px;
   padding: 20px 20px 0;
-  text-align: center;
+ text-align: center;
   position: relative;
   min-height: 260px;
   display: grid;
   overflow: hidden;
-  cursor: pointer;
+  
 }
-
-.image img {
+.media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+}
+.media img{
   height: 300px;
   width: 300px;
   border-radius: 5px;
@@ -28,14 +32,14 @@
   object-fit: cover;
 }
 
-.video {
+ .video {
   height: 300px;
   width: 300px;
   border-radius: 5px;
   object-position: 80% 10%;
   object-fit: cover;
 }
-.details {
+.galleryContainer article .details {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -49,12 +53,42 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  width: 15%;
+  width: 20%;
 }
 
 .like-coeur {
   display: flex;
+  width: 20px;
 }
+
+.heart {
+  background: url(/assets/icons/heart-regular.svg) center center / 100% 100%;
+  border: none;
+  cursor: pointer;
+  text-indent: -3000px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-color: #901c1c;
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  /*---- épaisseur contour du coeur---*/
+  -webkit-text-stroke-color: #901c1c;
+  /*--- couleur contour coeur---*/
+  transition: all 0.5s ease-in-out;
+  /*--- pour rendre le scale plus souple---*/
+  transform: scale(1);
+}
+
+/*.heart:hover {
+  background: #901c1c;
+  background-clip: text;
+  /*---- lacouleur ne se limite qu'au coeur ---*/
+  /*-webkit-text-fill-color: transparent;
+  /*----transparence de color pour faire apparaitre lacouleur---
+  -webkit-text-stroke-width: 2px;
+  transform: scale(1.2);*/
+  /*--- le coeur grossit---*/
+}*/
 
 a {
   text-decoration: none;

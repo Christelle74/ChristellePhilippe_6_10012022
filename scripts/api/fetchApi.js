@@ -1,10 +1,6 @@
 let photographers = [];
 let medias = [];
 
-const urlSearch = new URLSearchParams(window.location.search);
-const id = urlSearch.get("id");
-//console.log(id);
-
 const fetchPhotographers = async () => {
   await fetch("data/photographers.json")
     .then((res) => res.json())
