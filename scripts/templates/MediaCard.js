@@ -1,5 +1,5 @@
-import { likesArray, likesIncrement } from "/scripts/utils/likes.js";
-import { mediaSort } from "/scripts/utils/dropDown.js";
+import { likesArray, likesIncrement } from "../utils/likes.js";
+import { mediaSort } from "../utils/dropDown.js";
 
 const mediasContainer = document.querySelector(".galleryContainer");
 //console.log(medias);//dans la console fait apparaitre l'array de tous les medias
