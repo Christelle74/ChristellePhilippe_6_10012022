@@ -1,9 +1,9 @@
 @import url("photographer.css");
-
 @import url("gallery.css");
-@import url("lightbox.css");
+
 @import url("contactForm.css");
 /*@import url("modal.css");*/
+@import url("lightbox.css");
 
 body {
   font-family: "DM Sans", sans-serif;

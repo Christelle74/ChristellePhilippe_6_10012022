@@ -1,83 +1,42 @@
-class MediaLikes {
-  constructor(CounterLikesSubject) {
-    this.CounterLikesSubject = CounterLikesSubject;
-    this.likes = document.getElementsByClassName("heart");
-    this.likesPerMedia = document.getElementsByClassName("like-number");
-    this.totalPhotographerLikes =
-      document.getElementsByClassName("total_likes");
-  }
+/**
+ * gestion des likes des medias
+ * recupération des elements dom
+ * forEach = recupération des likes par la propriété like des medias
+ * likesArray.push : on met le nbre de likes dans un tableau vide (reduits en en seul nombre)
+ * on injecte ce nombre dans le footer du photographe (textcontent)
+ * for + addeventlistner : pour chaque click ecouté on incremente les compteurs de 1
+ */
 
-  handleLikeButton() {
-    const that = this;
-    this.likes.addEventListener("click", function () {
-      if ("le coeur est deja liked") {
-        ("coeur redevient blanc");
-        that.CounterLikesSubject.fire("DEC");
-      } else {
-        ("lecoeur devient rouge");
-        that.CounterLikesSubject.fire("INC");
-      }
+let likesArray = [];
+
+function likesIncrement(PhotographerMedias) {
+  const pLikesSum = document.querySelector("#total_likes");
+  //console.log(pLikesSum);
+  const mediaCounterLikes = document.querySelectorAll("#like-number");
+  //console.log(mediaCounterLikes);
+  const likeHeart = document.querySelectorAll("#heart");
+  //console.log(likeHeart);
+
+  PhotographerMedias.forEach((media) => {
+    let mediaLikesTextContent = media.likes;
+    // console.log(mediaLikesTextContent);
+
+    likesArray.push(mediaLikesTextContent);
+    const likesSum = likesArray.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
+    // console.log(likesSum);
+
+    pLikesSum.textContent = likesSum;
+  });
+
+  for (let i = 0; i < likeHeart.length; i++) {
+    likeHeart[i].addEventListener("click", () => {
+      mediaCounterLikes[i].textContent =
+        parseInt(mediaCounterLikes[i].textContent) + 1;
+      pLikesSum.textContent = parseInt(pLikesSum.textContent) + 1;
     });
   }
 }
 
-class CounterLikesSubject {
-  constructor() {
-    this._observers = [];
-  }
-  like(observer) {
-    this._observers.push(observer);
-  }
-  unlike(observer) {
-    this._observers = this._observers.filter((obs) => obs !== observer);
-  }
-  fire(action) {
-    this._observers.forEach((observer) => observer.update(action));
-  }
-}
-
-class LikesCounter {
-  constructor() {
-    this._count = 0;
-    this._totalLikes = document.querySelector(".total_likes");
-  }
-  update(action) {
-    if (action === "INC") {
-      this._count += 1;
-    } else if (action === "DEC") {
-      this._count -= 1;
-    } else {
-      throw "unknown action";
-    }
-    this._totalLikes.innerHTML = this._count;
-    console.log("action");
-  }
-}
-
-/*//selection de tous les coeurs
-const likes = document.getElementsByClassName("heart");
-console.log(likes);
-
-//selection de tous les champs nombre de likes par media
-//const likesPerMedia = document.getElementsByClassName("like-number");
-//console.log(likesPerMedia);
-
-//selection du champ nombre total de likes du photographe
-const totalPhotographerLikes = document.getElementsByClassName("total_likes");
-console.log(totalPhotographerLikes);
-
-//calcul des likes
-let likesArray = [];
-let totalLikes = 0;
-for (i = 0; i < likes.length; i++) {
-  totalLikes += parseInt(likes[i].innerHTML);
-}
-
-likes.addEventListener("click", addOneLike);
-
-function addOneLike() {
-  let totalLikes = document.getElementById("like-number").innerHTML++;
-  console.log(totalLikes);
-  likesPerMedia.textContent++;
-  return likesPerMedia;
-}*/
+export { likesArray, likesIncrement };

@@ -1,5 +1,5 @@
 class Image {
-  constructor(data, CounterLikesSubject) {
+  constructor(data) {
     this.id = data.id;
     this.image = data.image;
     this.title = data.title;
@@ -7,28 +7,42 @@ class Image {
     this.likes = data.likes;
     this.date = data.date;
     this.price = data.price;
-    this.CounterLikesSubject = CounterLikesSubject;
   }
 
   createMediaCard() {
     return `
-        <figure class="media">
-            <div  class="image">
-                <img src="./assets/images/${this.imgPhotographerId}/${this.image}" alt="${this.title}"></img>
+        <figure  class="media" >
+            <div id="mediaLink" data-id="${this.id}" >
+              <img  src="./assets/images/${this.imgPhotographerId}/${this.image}" alt="${this.title}"></img>
             </div>
-            <figcaption class="details">
-                <h2 class="titre">${this.title}</h2>
-                <div class="likes">
-                    <p class="like-number">${this.likes}</p>
-                    <button data-id="${this.id}" class="heart"><i class="fas fa-heart"></i> </button>
+            <figcaption id="details">
+                <h2 id="titre">${this.title}</h2>
+                <div id="likes">
+                    <p id="like-number">${this.likes}</p>
+                    <button  id="heart"><i class="fas fa-heart"></i> </button>
                 </div>
             </figcaption>
-        </figure>`;
+        </figure>
+      
+
+
+
+        <div class="lightbox ">
+          <button class="lightbox_close"></button>
+          <button class="lightbox_next"></button>
+          <button class="lightbox_prev"></button>
+          <div  class="lightbox_container"  data-id="${this.id}">
+            <img  id="imgBox" src="./assets/images/${this.imgPhotographerId}/${this.image}" alt="${this.title}" ></img>
+            <p class=titleCurrentImg>${this.title}</p>
+          </div>
+      </div>
+        
+        `;
   }
 }
 
 class Video {
-  constructor(data, CounterLikesSubject) {
+  constructor(data) {
     this.id = data.id;
     this.video = data.video;
     this.title = data.title;
@@ -36,27 +50,42 @@ class Video {
     this.likes = data.likes;
     this.date = data.date;
     this.price = data.price;
-    this.CounterLikesSubject = CounterLikesSubject;
   }
   createMediaCard() {
     return `
-        <figure class="media">
-            <video class="video">
-                <source class="source" src="./assets/images/${this.videoPhotographerId}/${this.video}"  alt="${this.title}">
-            </video>
-            <div class="details">
-                <h2 class="titre">${this.title}</h2>
-                <div class="likes">
-                    <p class="like-number">${this.likes}</p>
-                    <button data-id="${this.id}" class="heart"> <i class="fas fa-heart"></i></button>
+        <figure class="media" >
+          <div id="mediaLink" data-id="${this.id}">
+            <video   src="./assets/images/${this.videoPhotographerId}/${this.video}"  alt="${this.title}"></video>
+          </div>
+              
+            <div id="details">
+                <h2 id="titre">${this.title}</h2>
+                <div id="likes">
+                    <p id="like-number">${this.likes}</p>
+                    <button  id="heart"> <i class="fas fa-heart"></i></button>
                 </div>
             </div>
-        </figure>`;
+        </figure>
+      
+      
+      
+      <div class="lightbox ">
+        <button class="lightbox_close"></button>
+        <button class="lightbox_next"></button>
+        <button class="lightbox_prev"></button>
+        <div  class="lightbox_container" data-id="${this.id}">
+          <video  id="imgBox" src="./assets/images/${this.videoPhotographerId}/${this.video}"  alt="${this.title}"></video>
+          <p class=titleCurrentImg>${this.title}</p>
+        </div>
+      </div>
+       `;
   }
 }
 
+//Factory : pas besoin d'utiliser un "constructor", on peut utiliser une fonction statique
+//retournée dans le fichier MediaCard.js
 class mediaFactory {
-  constructor(media) {
+  static createMediaCard(media) {
     if ("video" in media) {
       return new Video(media);
     } else {

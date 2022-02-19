@@ -1,6 +1,7 @@
 .galleryContainer {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin-top: 100px;
   height: 500px;
 }
@@ -23,8 +24,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center; 
+  cursor: pointer;
 }
-.media img{
+.media  img{
   height: 300px;
   width: 300px;
   border-radius: 5px;
@@ -32,14 +34,14 @@
   object-fit: cover;
 }
 
- .video {
+ .media video {
   height: 300px;
   width: 300px;
   border-radius: 5px;
   object-position: 80% 10%;
   object-fit: cover;
 }
-.galleryContainer article .details {
+.galleryContainer article #details {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -49,19 +51,19 @@
   width: 100%;
 }
 
-.likes {
+#likes {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   width: 20%;
 }
 
-.like-coeur {
+#like-number {
   display: flex;
   width: 20px;
 }
 
-.heart {
+#heart {
   background: url(/assets/icons/heart-regular.svg) center center / 100% 100%;
   border: none;
   cursor: pointer;
@@ -88,8 +90,8 @@
   -webkit-text-stroke-width: 2px;
   transform: scale(1.2);*/
   /*--- le coeur grossit---*/
-}*/
-
+}
+*/
 a {
   text-decoration: none;
 }

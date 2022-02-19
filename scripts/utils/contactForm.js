@@ -15,12 +15,6 @@ const submitForm = document.querySelector("#validation");
 
 //console.log(submitForm);
 
-const photographeConstactName = document.querySelector(
-  "#photographerContactName"
-);
-console.log(photographeConstactName);
-photographeConstactName.innerHTML = "Contactez-moi"; //+${photographer.name};
-
 //openModal.addEventListener("click", launchModal);
 
 function launchModal() {
@@ -179,7 +173,7 @@ function globalValidation() {
     };
     console.log(returnValues);
     localStorage.setItem("returnValues", JSON.stringify(returnValues)); //stockage des données dans le localStorage
-    console.log(localStorage);
+    //console.log(localStorage);
 
     autoCloseDelay();
     formulaire.reset(); // le formulaire s'efface

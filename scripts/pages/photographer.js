@@ -18,6 +18,15 @@ const photographerProfilDisplay = async () => {
   //console.log(photographer);
   //console.log(photographer.id);
 
+  // insertion du nom du photographe dans la modale de contact
+  const photographeConstactName = document.querySelector(
+    "#photographerContactName"
+  );
+  //console.log(photographeConstactName);
+  photographeConstactName.innerHTML =
+    "Contactez-moi" + "<br/>" + photographer.name;
+
+  //creation du profil du photographe : détails, photo, bouton de contact, dropdown, footer
   const photographerProfil = `
   <div class="photograph-profil">
       <div  class="photograph_details" role="text" >
@@ -33,19 +42,25 @@ const photographerProfilDisplay = async () => {
       <img class="photograph_picture" src="./assets/photographers/${photographer.portrait}" aria-label="${photographer.alt}" alt="${photographer.alt}">
       </div>
   </div>
-      <div class="tri"> 
+
+
+      <div id="tri"> 
           <label class= "dropbox" for="trier">Trier par</label>
-          <select class="btn-select" name="select" id="select">
-              <option value="popularité">Popularité</option>
+          <select class="btn-select" name="select" id="selection">
+              <option value="popularite">Popularité</option>
               <option value="date">Date</option>
               <option value="titre">Titre</option>
           </select>
       </div> 
 
-  
+
+
+    
+
+
   <footer>
       <div class="counter"> 
-          <span class="total_likes">0</span>
+          <span id="total_likes">0</span>
           <i class="fas fa-heart"></i>
           <span class="total_prices">${photographer.price} € / jour</span>
       </div> 
@@ -59,52 +74,3 @@ const photographerProfilDisplay = async () => {
 };
 
 photographerProfilDisplay();
-
-/*const photographerProfilContainer =
-  document.querySelector(".photograph-header");
-//console.log(photographerProfilContainer);
-
-const galleryContainer = document.querySelector(".container");
-console.log(galleryContainer);
-
-const urlSearch = new URLSearchParams(window.location.search);
-const id = urlSearch.get("id");
-//console.log(id);
-
-fetch("/data/photographers.json")
-  .then((resp) => resp.json())
-  .then((data) => {
-    //recherche des photographes--------------------------
-    const photographers = data.photographers;
-    //console.log(photographers);
-
-    //recherche des photographes par leur id et affichage du profil-------------
-    const currentPhotographer = photographers.find(
-      (photographer) => photographer.id === parseInt(id)
-    );
-    console.log(currentPhotographer);
-
-    if (currentPhotographer) {
-      photographerProfilContainer.innerHTML = new PhotographerCard(
-        currentPhotographer
-      ).getPhotographerProfilCard();
-    }
-
-    //recherche des medias------------------------------
-    const medias = data.media;
-    console.log(medias);
-
-    //recherche des medias par photographe -----------------------------------
-    const currentMedia = medias.filter(
-      (media) => media.photographerId === parseInt(id)
-    );
-    console.log(currentMedia);
-
-    currentMedia.forEach((media) => {
-      galleryContainer.innerHTML += new MediaCard(media).createMediaCard();
-    });
-  })
-
-  .catch((err) => {
-    console.log(err);
-  });*/
