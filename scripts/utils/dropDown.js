@@ -1,3 +1,5 @@
+import { genMediaArticle } from "../templates/MediaCard.js";
+
 /**
  *filtrage des medias par le dropdown /select /option
  *
@@ -6,7 +8,7 @@
  *
  * */
 
-function mediaSort(PhotographerMedias) {
+export function mediaSort(PhotographerMedias) {
   //  const filters = document.querySelectorAll("#selection option");
   var selectBox = document.getElementById("selection");
   //  console.log(filters);
@@ -34,7 +36,14 @@ function mediaSort(PhotographerMedias) {
       });
     }
     console.log(event.target.value);
+
+    const mediasContainer = document.querySelector(".galleryContainer");
+    // console.log(mediasContainer.childNodes.length );
+
+    // On enleve tous les articles précédemment créés
+    mediasContainer.innerHTML = "";
+
+    // On regenère chaque médias de l'élément Html "article" avec le PhotographerMedias nouvellement trié
+    genMediaArticle(PhotographerMedias);
   });
 }
-
-export { mediaSort };
