@@ -64,7 +64,7 @@
 }
 
 #heart {
-  background: url(/assets/icons/heart-regular.svg) center center / 100% 100%;
+  background-image: url(/assets/icons/heart-regular.svg) center center / 100% 100%;
   border: none;
   cursor: pointer;
   text-indent: -3000px;

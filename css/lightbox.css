@@ -20,8 +20,8 @@
 .lightbox_prev {
   width: 48px;
   height: 30px;
-  background: url(../assets/icons/chevron-right-solid.svg) center center / 100%
-    100%;
+  background-image: url(../assets/icons/chevron-right-solid.svg) center center /
+    100% 100%;
   top: 50%;
   right: 10px;
   margin-top: -14px;
@@ -29,14 +29,15 @@
 }
 
 .lightbox_prev {
-  background: url(../assets/icons/chevron-left-solid.svg) center center / 100%
-    100%;
+  background-image: url(../assets/icons/chevron-left-solid.svg) center center /
+    100% 100%;
   right: auto;
   left: 10px;
 }
 
 .lightbox_close {
-  background: url(../assets/icons/times-solid.svg) center center / 100% 100%;
+  background-image: url(../assets/icons/times-solid.svg) center center / 100%
+    100%;
   width: 35px;
   height: 35px;
   top: 5%;
