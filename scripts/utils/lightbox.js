@@ -87,7 +87,7 @@ class Lightbox {
         "</p>";
     } else {
       container.innerHTML =
-        '<p> <video id="imgBox" src="./assets/images/' +
+        '<p> <video controls id="imgBox" src="./assets/images/' +
         this.currentMedia.photographerId +
         "/" +
         this.currentMedia.video +

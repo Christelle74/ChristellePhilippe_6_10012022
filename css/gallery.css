@@ -80,17 +80,6 @@
   transform: scale(1);
 }
 
-/*.heart:hover {
-  background: #901c1c;
-  background-clip: text;
-  /*---- lacouleur ne se limite qu'au coeur ---*/
-/*-webkit-text-fill-color: transparent;
-  /*----transparence de color pour faire apparaitre lacouleur---
-  -webkit-text-stroke-width: 2px;
-  transform: scale(1.2);*/
-/*--- le coeur grossit---
-}
-*/
 a {
   text-decoration: none;
 }

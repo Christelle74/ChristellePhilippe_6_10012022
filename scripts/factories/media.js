@@ -55,7 +55,7 @@ class Video {
     return `
         <figure class="media" >
           <div id="mediaLink" data-id="${this.id}">
-            <video   src="./assets/images/${this.videoPhotographerId}/${this.video}"  alt="${this.title}"></video>
+            <video  controls src="./assets/images/${this.videoPhotographerId}/${this.video}"  alt="${this.title}" type="video/mp4"></video>
           </div>
               
             <div id="details">
