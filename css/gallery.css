@@ -12,21 +12,20 @@
   min-width: 250px;
   margin: 10px;
   padding: 20px 20px 0;
- text-align: center;
+  text-align: center;
   position: relative;
   min-height: 260px;
   display: grid;
   overflow: hidden;
-  
 }
 .media {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   cursor: pointer;
 }
-.media  img{
+.media img {
   height: 300px;
   width: 300px;
   border-radius: 5px;
@@ -34,7 +33,7 @@
   object-fit: cover;
 }
 
- .media video {
+.media video {
   height: 300px;
   width: 300px;
   border-radius: 5px;
@@ -64,7 +63,7 @@
 }
 
 #heart {
-  background-image: url(/assets/icons/heart-regular.svg) center center / 100% 100%;
+  background: url(../assets/icons/heart-regular.svg) center center / 100% 100%;
   border: none;
   cursor: pointer;
   text-indent: -3000px;
@@ -85,11 +84,11 @@
   background: #901c1c;
   background-clip: text;
   /*---- lacouleur ne se limite qu'au coeur ---*/
-  /*-webkit-text-fill-color: transparent;
+/*-webkit-text-fill-color: transparent;
   /*----transparence de color pour faire apparaitre lacouleur---
   -webkit-text-stroke-width: 2px;
   transform: scale(1.2);*/
-  /*--- le coeur grossit---*/
+/*--- le coeur grossit---
 }
 */
 a {

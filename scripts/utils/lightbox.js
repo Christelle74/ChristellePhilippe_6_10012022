@@ -9,7 +9,7 @@ class Lightbox {
   show(id) {
     this.currentMedia = this.getElementById(id);
     //erreur le current media ne renvoie pas le detail du media(voir debogueur)
-    console.log(id); //renvoie bien l'id de la photo au clic
+    //console.log(id); //renvoie bien l'id de la photo au clic
     this.display();
   }
 
@@ -26,7 +26,7 @@ class Lightbox {
     } else {
       this.currentMedia = this.listMedias[index + 1];
     }
-    console.log(index);
+    //console.log(index);
     this.display();
   }
 
@@ -42,7 +42,7 @@ class Lightbox {
     } else {
       this.currentMedia = this.listMedias[index - 1];
     }
-    console.log(index);
+    //console.log(index);
     this.display();
   }
 
