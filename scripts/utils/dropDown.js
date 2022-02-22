@@ -1,17 +1,13 @@
-import { genMediaArticle } from "../templates/MediaCard.js";
+import { displayGallery } from "../templates/MediaCard.js";
 
 /**
- *filtrage des medias par le dropdown /select /option
+ *filtrage des medias par le dropdown /select /option avec méthode sort
  *
- *
- *
- *
- * */
+ */
 
 export function mediaSort(PhotographerMedias) {
-  //  const filters = document.querySelectorAll("#selection option");
-  var selectBox = document.getElementById("selection");
-  //  console.log(filters);
+  const selectBox = document.getElementById("selection");
+  // console.log(selectBox);
 
   selectBox.addEventListener("change", (event) => {
     if (event.target.value === "popularite") {
@@ -35,15 +31,15 @@ export function mediaSort(PhotographerMedias) {
         return b.likes - a.likes;
       });
     }
-    console.log(event.target.value);
+    //console.log(event.target.value);
 
     const mediasContainer = document.querySelector(".galleryContainer");
-    // console.log(mediasContainer.childNodes.length );
+    //console.log(mediasContainer.childNodes.length); //renvoi le nombre de médias affichés
 
-    // On enleve tous les articles précédemment créés
+    // On vide le container galerie
     mediasContainer.innerHTML = "";
 
     // On regenère chaque médias de l'élément Html "article" avec le PhotographerMedias nouvellement trié
-    genMediaArticle(PhotographerMedias);
+    displayGallery(PhotographerMedias);
   });
 }

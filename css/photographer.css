@@ -16,90 +16,91 @@ main {
   flex-wrap: wrap;
 
   background-color: #fafafa;
-  border-radius: 5px;
-  height: 300px;
+  border-radius: 0.31rem;
+  height: 18.75rem;
   width: auto;
-  margin: 50px 100px;
+  margin: 3.12rem 6.25rem;
 
   justify-content: space-around;
   align-items: center;
 }
 
 .photograph_details {
-  min-width: 250px;
+  min-width: 15.62rem;
   /*flex: 1 0 25%;
   margin: 10px;
   padding: 20px 20px 0;
   text-align: center;display: grid;*/
   position: relative;
-  min-height: 260px;
-
   overflow: hidden;
-  width: 360px;
-  height: 200px;
 }
 
 .photograph_details h2 {
   color: #d3573c;
-  font-size: 64px;
+  font-size: 4rem;
   margin: 0;
 }
 
 .photograph_city {
-  font-size: 24px;
-  line-height: 31px;
+  font-size: 1.5rem;
+  line-height: 1.93rem;
   color: #901c1c;
 }
 
 .photograph_tag {
-  font-size: 18px;
-  line-height: 23px;
+  font-size: 1.12rem;
+  line-height: 1.5rem;
 
   color: #525252;
 }
 
 .photograph_picture {
-  height: 200px;
-  width: 200px;
+  height: 12.5rem;
+  width: 12.5rem;
   border-radius: 50%;
   object-position: 80% 10%;
   object-fit: cover;
 }
 
 .contact_button {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
   color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
+  padding: 0.68rem;
+  width: 10.62rem;
+  height: 4.37rem;
   border: none;
   background-color: #901c1c;
-  border-radius: 5px;
+  border-radius: 0.31rem;
   cursor: pointer;
 }
 
+.contact_button:hover {
+  background-color: #db8876;
+  color: black;
+}
+
 /*dropdown---------------------------------------------*/
-.tri {
+#tri {
   position: absolute;
-  min-height: 260px;
-  width: 360px;
-  height: 200px;
+  min-height: 16.25rem;
+  width: 22.5rem;
+  height: 12.5rem;
   left: 8%;
   top: 15%;
 }
 
 .dropbox {
   position: absolute;
-  width: 74px;
-  height: 23px;
-  left: 0px;
-  top: 350px;
-  line-height: 23px;
+  width: 4.62rem;
+  height: 1.43rem;
+  left: 5%;
+  top: 21.87rem;
+  line-height: 1.5rem;
   font-family: DM Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.12rem;
 
   color: #000000;
 }
@@ -107,21 +108,25 @@ main {
 .btn-select {
   background-color: #901c1c;
   border-color: transparent;
-  border-radius: 5px;
+  border-radius: 0.31rem;
   color: white;
-  font-size: 18px;
-  min-height: 50px;
-  padding: 5px 10px;
-  width: 170px;
-  height: 10px;
+  font-size: 1.12rem;
+  min-height: 3.12rem;
+  padding: 0.31rem 0.62rem;
+  width: 10.62rem;
+  height: 0.62rem;
 
   position: absolute;
-  width: 170px;
-  height: 69px;
-  left: 90px;
-  top: 325px;
+  width: 10.62rem;
+  height: 4.31rem;
+  left: 30%;
+  top: 20.31rem;
 
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+}
+
+.option * {
+  height: 1.87rem;
 }
 
 /*counter---------------------------------*/
@@ -132,13 +137,13 @@ main {
   align-items: center;
   position: fixed;
   bottom: 0;
-  right: 20px;
-  width: 376px;
-  height: 60px;
+  right: 1.25rem;
+  width: 23.5rem;
+  height: 3.75rem;
   background: #db8876;
-  border-radius: 5px;
-  border-radius: 5px;
-  font-size: 24px;
+  border-radius: 0.31rem;
+  border-radius: 0.31rem;
+  font-size: 1.5rem;
   font-weight: 500;
   z-index: 2;
 }

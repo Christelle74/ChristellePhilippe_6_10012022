@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="css/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="css/normalize.css" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    
-    
-    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/2e5849d038.js" crossorigin="anonymous"></script>
-    <title>Fisheye - photographe </title>
+
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/2e5849d038.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Fisheye - photographe</title>
   </head>
 
   <body>
     <header>
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" alt="FishEye Home Page"/>
-      <a/>
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="FishEye Home Page"
+        />
+      </a>
     </header>
 
     <main id="main">
       <section class="photograph-header"></section>
 
-
       <div class="galleryContainer"></div>
-   
+
       <!--<div class="lightbox">
         <button class="lightbox_close">Fermer</button>
         <button class="lightbox_next">Suivant</button>
@@ -34,70 +42,93 @@
           <img src="https://picsum.photos/900/900" alt="">
         </div>
       </div>-->
-
     </main>
-   
 
-
-    <div id="contact_modal" role="dialog" aria-labelledby="titlemodal" >
-			<div class="form">
-				<header>
-          <h2 class="titlemodal" id="photographerContactName"></h2>
-          <img src="assets/icons/close.svg" class="closeModal" />
+    <div id="contact_modal" role="dialog" tabindex="-1">
+      <div class="form">
+        <header>
+          <h1 class="titlemodal" id="photographerContactName"></h1>
+          <button class="closeModal">
+            <img src="assets/icons/close.svg" alt="" aria-label="Close" />
+          </button>
         </header>
-				<form name="formulaire" id="formulaire" method="get" action="index.html">
-					<div class="formData">
-						<label for="first">Prénom</label><br/>
-						<input class="text-control" type="text" id="first" name="first"/><br/>
+        <form
+          name="formulaire"
+          id="formulaire"
+          method="get"
+          action="index.html"
+        >
+          <div class="formData">
+            <label for="first">Prénom</label><br />
+            <input
+              class="text-control"
+              type="text"
+              id="first"
+              name="first"
+              aria-labelledby="first"
+            /><br />
             <small id="firstError"></small>
-					</div>
+          </div>
 
           <div class="formData">
-						<label for="last">Nom</label><br/>
-						<input class="text-control" type="text" id="last" name="last"/><br/>
+            <label for="last">Nom</label><br />
+            <input
+              class="text-control"
+              type="text"
+              id="last"
+              name="last"
+              aria-labelledby="last"
+            /><br />
             <small id="lastError"></small>
-					</div>
+          </div>
 
           <div class="formData">
-						<label for="email">Email</label><br/>
-						<input class="text-control" type="text" id="email" name="email"/><br/>
+            <label for="email">Email</label><br />
+            <input
+              class="text-control"
+              type="text"
+              id="email"
+              name="email"
+              aria-labelledby="email"
+            /><br />
             <small id="emailError"></small>
-					</div>
+          </div>
 
           <div class="formData">
-						<label for="message">Votre message</label><br/>
-						<input name="message" id="message" ></input><br/>
+            <label for="message">Votre message</label><br />
+            <input
+              name="message"
+              id="message"
+              aria-labelledby="message"
+            /><br />
             <small id="messageError"></small>
-					</div>
+          </div>
 
-          <input
-                class="contact_button"
-                type="submit"
-                value="Envoyer"
-                id="validation"
-              />
+          <button
+            class="contact_button"
+            type="submit"
+            value="Envoyer"
+            id="validation"
+          >
+            Envoyer
+          </button>
+
           <!--<button id="validation" class="contact_button">Envoyer</button>-->
-				</form>
+        </form>
         <small id="modalError"></small>
-			</div>
-		</div>
-
+      </div>
+    </div>
 
     <script src="scripts/api/fetchApi.js"></script>
 
-    <script  src="scripts/pages/photographer.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
     <script type="module" src="scripts/templates/MediaCard.js"></script>
     <script src="scripts/factories/media.js"></script>
-    
 
     <script src="scripts/utils/contactForm.js"></script>
-    
+
     <script src="scripts/utils/lightbox.js"></script>
     <script type="module" src="scripts/utils/likes.js"></script>
     <script type="module" src="scripts/utils/dropDown.js"></script>
-    
-  
-   
   </body>
 </html>
-

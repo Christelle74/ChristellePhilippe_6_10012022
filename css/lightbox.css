@@ -18,13 +18,13 @@
 }
 .lightbox_next,
 .lightbox_prev {
-  width: 48px;
-  height: 30px;
+  width: 3rem;
+  height: 1.87rem;
   background: url(../assets/icons/chevron-right-solid.svg) center center / 100%
     100%;
   top: 50%;
-  right: 10px;
-  margin-top: -14px;
+  right: 0.62rem;
+  margin-top: -0.87rem;
   z-index: 11;
 }
 
@@ -32,15 +32,15 @@
   background: url(../assets/icons/chevron-left-solid.svg) center center / 100%
     100%;
   right: auto;
-  left: 10px;
+  left: 0.62rem;
 }
 
 .lightbox_close {
   background: url(../assets/icons/times-solid.svg) center center / 100% 100%;
-  width: 35px;
-  height: 35px;
+  width: 2.19rem;
+  height: 2.19rem;
   top: 5%;
-  right: 10px;
+  right: 0.62rem;
   z-index: 12;
 }
 
@@ -49,7 +49,7 @@
   transition: 0.3s;
   cursor: pointer;
   border: none;
-  text-indent: -3000px;
+  text-indent: -187.5rem;
 }
 
 .lightbox button:hover {
@@ -57,6 +57,7 @@
 }
 .lightbox_container img {
   max-width: 100%;
+  max-height: 100vh;
   height: auto;
   animation: lightboxIn 0.5s;
 }
@@ -64,13 +65,12 @@
   display: flex;
   flex-direction: column;
 
-  width: 600px;
+  width: 37.5rem;
   margin: auto;
 }
 .titleCurrentImg {
   display: flex;
   color: #901c1c;
-  margin-top: 5%;
   justify-items: flex-start;
 }
 #imgBox {

@@ -2,82 +2,71 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 100px;
-  height: 500px;
+  margin-top: 5rem;
+  height: 31.25rem;
 }
 
 .galleryContainer article {
   /*flex: 1 0 25%;*/
 
-  min-width: 250px;
-  margin: 10px;
-  padding: 20px 20px 0;
+  min-width: 15.62rem;
+  /* margin: 10px;
+  padding: 20px 20px 0;*/
   text-align: center;
   position: relative;
-  min-height: 260px;
+  min-height: 16.25rem;
   display: grid;
   overflow: hidden;
 }
 .media {
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center;*/
   cursor: pointer;
 }
-.media img {
-  height: 300px;
-  width: 300px;
-  border-radius: 5px;
+.media img,
+.media video {
+  height: 18.75rem;
+  width: 18.75rem;
+  border-radius: 0.31rem;
   object-position: 80% 10%;
   object-fit: cover;
 }
 
-.media video {
-  height: 300px;
-  width: 300px;
-  border-radius: 5px;
-  object-position: 80% 10%;
-  object-fit: cover;
-}
 .galleryContainer article #details {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-size: 18px;
+  font-size: 0.8rem;
   color: #901c1c;
   font-weight: 400;
   width: 100%;
+  flex-direction: row;
 }
 
 #likes {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around;
   width: 20%;
 }
 
 #like-number {
-  display: flex;
-  width: 20px;
+  /*display: flex;*/
+  width: 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 #heart {
-  background: url(../assets/icons/heart-regular.svg) center center / 100% 100%;
+  background: url(../assets/icons/heart-solid.svg) center center / 100% 100%;
   border: none;
   cursor: pointer;
-  text-indent: -3000px;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-color: #901c1c;
-  color: white;
-  -webkit-text-stroke-width: 2px;
-  /*---- épaisseur contour du coeur---*/
-  -webkit-text-stroke-color: #901c1c;
-  /*--- couleur contour coeur---*/
-  transition: all 0.5s ease-in-out;
-  /*--- pour rendre le scale plus souple---*/
-  transform: scale(1);
+  width: 1.2rem;
+  height: 1.2rem;
+  /*top: 5%;
+  right: 0.62rem;*/
 }
 
 a {

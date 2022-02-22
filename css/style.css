@@ -12,73 +12,72 @@ body {
 
 header {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin-top: 30px;
+  margin: 1.87rem;
   text-decoration: none;
+  width: 100%;
 }
 
 h1 {
   color: #901c1c;
-  margin-right: 100px;
-  font-size: 36px;
+  margin-right: 6.25rem;
+  font-size: 2.25rem;
 }
 
 .logo {
-  height: 50px;
-  margin-left: 100px;
+  height: 3.12rem;
+  margin-left: 6.25rem;
 }
 
 p {
-  margin-top: 0.5rem;
-  line-height: 1px;
+  line-height: 0.5rem;
 }
 
 /*section grille de photographes */
 .photographer_section {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 100px;
+  margin: 3rem 0;
 }
 
 .photographer_section article {
-  flex: 1 0 25%;
+  flex: 1 0 15%;
 
-  min-width: 250px;
-  margin: 10px;
-  padding: 20px 20px 0;
+  min-width: 15.62rem;
+  margin: 0.62rem;
+  padding: 1.25rem 1.25rem 0;
   text-align: center;
   position: relative;
-  min-height: 260px;
+  min-height: 16.25rem;
   display: grid;
   overflow: hidden;
 }
 
 .photographer_section article h2 {
   color: #d3573c;
-  font-size: 36px;
+  font-size: 2.25rem;
 }
 
 .photographer_picture {
-  height: 200px;
-  width: 200px;
+  height: 12.5rem;
+  width: 12.5rem;
   border-radius: 50%;
-  object-position: 80% 10%;
   object-fit: cover;
 }
 
 .photographer_city {
-  font-size: 13px;
+  font-size: 0.81rem;
   color: #901c1c;
 }
 
 .photographer_tag {
-  font-size: 10px;
+  font-size: 0.62rem;
   color: black;
 }
 
 .photographer_price {
-  font-size: 9px;
+  font-size: 0.56rem;
   color: #525252;
 }

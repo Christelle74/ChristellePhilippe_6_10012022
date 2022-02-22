@@ -1,3 +1,8 @@
+/**
+ * page d'accueil du site, on récupère  les données des photographes en appelant la fetch
+ * dispatching des données (map), et fabrication du gabarit Html
+ */
+
 const photographersIndexContainer = document.querySelector(
   ".photographer_section"
 );
@@ -13,7 +18,7 @@ const photographersDisplay = async () => {
   <article>
     <a  href="./photographer.html?id=${photographer.id}">
       <div role="figure">
-        <img class="photographer_picture" src="./assets/photographers/${photographer.portrait}" aria-label="${photographer.alt} alt="${photographer.alt}">
+        <img class="photographer_picture" src="./assets/images/PhotographersIDPhotos/${photographer.portrait}" aria-label="${photographer.name} alt="${photographer.name}">
         <h2>${photographer.name}</h2>
       </div>
     </a>

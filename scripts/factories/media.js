@@ -1,3 +1,7 @@
+/**
+ * 2 constructors "image" et"video" qui permettent de préparer les gabarits Html et de récupérer les datas
+ * 1 factory qui permet de prendre en compte les 2 sortes de médias jpg et mp4
+ */
 class Image {
   constructor(data) {
     this.id = data.id;
@@ -19,7 +23,7 @@ class Image {
                 <h2 id="titre">${this.title}</h2>
                 <div id="likes">
                     <p id="like-number">${this.likes}</p>
-                    <button  id="heart"><i class="fas fa-heart"></i> </button>
+                    <button   id="heart" aria-label="likes"></button>
                 </div>
             </figcaption>
         </figure>
@@ -27,7 +31,7 @@ class Image {
 
 
 
-        <div class="lightbox ">
+        <div class="lightbox" arial-label="image closeup view" role="dialog">
           <button class="lightbox_close"></button>
           <button class="lightbox_next"></button>
           <button class="lightbox_prev"></button>
@@ -62,14 +66,14 @@ class Video {
                 <h2 id="titre">${this.title}</h2>
                 <div id="likes">
                     <p id="like-number">${this.likes}</p>
-                    <button  id="heart"> <i class="fas fa-heart"></i></button>
+                    <button aria-label="likes" id="heart"></button>
                 </div>
             </div>
         </figure>
       
       
       
-      <div class="lightbox ">
+      <div class="lightbox " arial-label="image closeup view" role="dialog">
         <button class="lightbox_close"></button>
         <button class="lightbox_next"></button>
         <button class="lightbox_prev"></button>
@@ -82,8 +86,10 @@ class Video {
   }
 }
 
-//Factory : pas besoin d'utiliser un "constructor", on peut utiliser une fonction statique
-//retournée dans le fichier MediaCard.js
+/**
+ * Factory : pas besoin d'utiliser un "constructor", on peut utiliser une fonction statique
+ * retournée dans le fichier MediaCard.js
+ */
 class mediaFactory {
   static createMediaCard(media) {
     if ("video" in media) {

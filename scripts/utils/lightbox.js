@@ -1,14 +1,14 @@
 class Lightbox {
   constructor(listMedias) {
     this.currentMedia = null;
-    this.listMedias = listMedias; //avoir la liste et pouvoir récupérer le précédent et le suivant
+    this.listMedias = listMedias; //avoir la liste des medias et pouvoir récupérer le précédent et le suivant
+    this.onKeyUp = this.onKeyUp.bind(this);
     this.manageEvent();
   }
 
-  //afficher la modale lors de l'appel d'un media et appelle la fonction display
+  //afficher la modale lors du click d'un media et appelle la fonction display
   show(id) {
     this.currentMedia = this.getElementById(id);
-    //erreur le current media ne renvoie pas le detail du media(voir debogueur)
     //console.log(id); //renvoie bien l'id de la photo au clic
     this.display();
   }
@@ -65,6 +65,8 @@ class Lightbox {
       this.close(); //appelle la fonction close()
     });
     //console.log(closeBtn);//renvoie le bouton x
+
+    document.addEventListener("keyup", this.onKeyUp);
   }
 
   //recherche dans la liste l'élement dont l'id et égale à l'id passé en paramètre
@@ -72,7 +74,7 @@ class Lightbox {
     return this.listMedias.find((media) => media.id == id);
   }
 
-  //affiche le media dans le src et injecte "show" dans la lightbox pour que la modale s'ouvre
+  //affiche le media et injecte "show" dans la lightbox pour que la modale s'ouvre
   display() {
     const container = document.querySelector(".lightbox_container");
     //console.log(container);
@@ -99,9 +101,20 @@ class Lightbox {
 
     document.querySelector(".lightbox").classList.add("show");
   }
+  //sortir de la lightbox avec le bouton escape du clavier et naviguer dans la lightbox avec les flèches
+  onKeyUp(e) {
+    if (e.key === "Escape") {
+      this.close(e);
+    } else if (e.key === "ArrowLeft") {
+      this.previous(e);
+    } else if (e.key === "ArrowRight") {
+      this.next(e);
+    }
+  }
 
   //fermeture de la modale par la croix
   close() {
     document.querySelector(".lightbox").classList.remove("show");
+    document.removeEventListener("keyup", this.onKeyUp);
   }
 }

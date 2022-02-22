@@ -1,3 +1,7 @@
+/**
+ * récupération des données photographes et médias par les fetch
+ */
+
 const fetchPhotographers = async () => {
   await fetch("data/photographers.json")
     .then((res) => res.json())
