@@ -18,10 +18,11 @@
     <title>Fisheye - photographe</title>
   </head>
 
-  <body>
-    <header>
+  <body id="body">
+    <header role="banner">
       <a href="index.html">
         <img
+          role="img"
           src="assets/images/logo.png"
           class="logo"
           alt="FishEye Home Page"
@@ -29,7 +30,7 @@
       </a>
     </header>
 
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <section class="photograph-header"></section>
 
       <div class="galleryContainer"></div>
@@ -44,12 +45,23 @@
       </div>-->
     </main>
 
-    <div id="contact_modal" role="dialog" tabindex="-1">
+    <div
+      id="contact_modal"
+      role="dialog"
+      tabindex="-1"
+      aria-hidden="true"
+      aria-describedby="photographerContactName"
+    >
       <div class="form">
         <header>
-          <h1 class="titlemodal" id="photographerContactName"></h1>
+          <h1 class="titlemodal" id="photographerContactName">Contactez-moi</h1>
           <button class="closeModal">
-            <img src="assets/icons/close.svg" alt="" aria-label="Close" />
+            <img
+              src="assets/icons/close.svg"
+              alt="Fermer le formulaire"
+              aria-label="Close"
+              role="img"
+            />
           </button>
         </header>
         <form
@@ -66,6 +78,7 @@
               id="first"
               name="first"
               aria-labelledby="first"
+              aria-required="true"
             /><br />
             <small id="firstError"></small>
           </div>
@@ -78,6 +91,7 @@
               id="last"
               name="last"
               aria-labelledby="last"
+              aria-required="true"
             /><br />
             <small id="lastError"></small>
           </div>
@@ -90,6 +104,7 @@
               id="email"
               name="email"
               aria-labelledby="email"
+              aria-required="true"
             /><br />
             <small id="emailError"></small>
           </div>
@@ -100,6 +115,7 @@
               name="message"
               id="message"
               aria-labelledby="message"
+              aria-required="true"
             /><br />
             <small id="messageError"></small>
           </div>

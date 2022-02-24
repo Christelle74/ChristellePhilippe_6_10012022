@@ -29,14 +29,13 @@ const photographerProfilDisplay = async () => {
   const photographeConstactName = document.querySelector(
     "#photographerContactName"
   ); //console.log(photographeConstactName);
-  photographeConstactName.innerHTML =
-    "Contactez-moi" + "<br/>" + photographer.name;
+  photographeConstactName.innerHTML = "<br/>" + photographer.name;
 
   //creation du profil du photographe : détails, photo, bouton de contact, dropdown, footer
   const photographerProfil = `
   <div class="photograph-profil"  aria-label="profil du photographe">
       <div  class="photograph_details" role="text" >
-          <h2>${photographer.name}</h1>
+          <h2>${photographer.name}</h2>
           <p class="photograph_city">${photographer.city}, ${photographer.country}</p>
           <p class="photograp_tag">${photographer.tagline}</p>
       </div>
@@ -45,7 +44,7 @@ const photographerProfilDisplay = async () => {
   
   
       <div>
-      <img class="photograph_picture" src="./assets/images/PhotographersIDPhotos/${photographer.portrait}" aria-label="${photographer.name}" alt="${photographer.name}">
+      <img role="img" class="photograph_picture" src="./assets/images/PhotographersIDPhotos/${photographer.portrait}"  alt=" ${photographer.name}">
       </div>
   </div>
 

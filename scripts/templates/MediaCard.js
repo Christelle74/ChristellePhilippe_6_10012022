@@ -49,8 +49,6 @@ export function displayGallery(PhotographerMedias) {
     // console.log(Template); //affiche dans la console chaque média
   });
 
-  //likesIncrement(PhotographerMedias); likesIncrement(PhotographerMedias);
-
   //lightbox , récupération des médias à afficher dans la lightbox
   let lightbox = new Lightbox(PhotographerMedias);
   //console.log(lightbox); //retourne l'array des médias
@@ -61,6 +59,18 @@ export function displayGallery(PhotographerMedias) {
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       lightbox.show(e.currentTarget.dataset.id); // on pointe l'id de l'élément cliqué et va afficher la lightbox depuis cet élément
+    });
+  });
+
+  // ouvrir la lightbox par le clavier toucher entrée
+  links.forEach((link) => {
+    link.addEventListener("keydown", (e) => {
+      const entrer = e.key;
+
+      if (entrer === "Enter") {
+        //alert("ok");
+        lightbox.show(e.currentTarget.dataset.id);
+      }
     });
   });
 }

@@ -2,15 +2,17 @@ class Lightbox {
   constructor(listMedias) {
     this.currentMedia = null;
     this.listMedias = listMedias; //avoir la liste des medias et pouvoir récupérer le précédent et le suivant
-    this.onKeyUp = this.onKeyUp.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
     this.manageEvent();
   }
 
   //afficher la modale lors du click d'un media et appelle la fonction display
+  //cacher le scroll de la page
   show(id) {
     this.currentMedia = this.getElementById(id);
     //console.log(id); //renvoie bien l'id de la photo au clic
     this.display();
+    body.classList.add("no-scroll");
   }
 
   //afficher le prochain média
@@ -66,7 +68,7 @@ class Lightbox {
     });
     //console.log(closeBtn);//renvoie le bouton x
 
-    document.addEventListener("keyup", this.onKeyUp);
+    document.addEventListener("keydown", this.onKeyDown);
   }
 
   //recherche dans la liste l'élement dont l'id et égale à l'id passé en paramètre
@@ -78,6 +80,7 @@ class Lightbox {
   display() {
     const container = document.querySelector(".lightbox_container");
     //console.log(container);
+
     if (this.currentMedia.image) {
       container.innerHTML =
         '<p> <img id="imgBox" src="./assets/images/' +
@@ -102,7 +105,7 @@ class Lightbox {
     document.querySelector(".lightbox").classList.add("show");
   }
   //sortir de la lightbox avec le bouton escape du clavier et naviguer dans la lightbox avec les flèches
-  onKeyUp(e) {
+  onKeyDown(e) {
     if (e.key === "Escape") {
       this.close(e);
     } else if (e.key === "ArrowLeft") {
@@ -115,6 +118,8 @@ class Lightbox {
   //fermeture de la modale par la croix
   close() {
     document.querySelector(".lightbox").classList.remove("show");
-    document.removeEventListener("keyup", this.onKeyUp);
+    document.removeEventListener("keydown", this.onKeyDown);
+
+    body.classList.remove("no-scroll");
   }
 }

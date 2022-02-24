@@ -12,34 +12,43 @@ const formulaire = document.querySelector("#formulaire");
 //console.log(openModal);
 
 const submitForm = document.querySelector("#validation");
-
 //console.log(submitForm);
+
+const mainPage = document.querySelector("#main");
+const body = document.querySelector("#body");
 
 //openModal.addEventListener("click", launchModal);
 
 function launchModal() {
-  contactModal.style.display = "block";
+  main.getAttribute("aria-hidden", "true");
+  contactModal.getAttribute("aria-hidden", "false");
+  body.classList.add("no-scroll");
+
+  contactModal.style.display = "block"; // apparition du corps du formulaire
   let inputs = Array.from(document.querySelectorAll(".input-validate")); //effacer le contour vert des champs
   inputs.forEach((input) => input.classList.remove("input-validate"));
-  //form.style.display = "block"; // apparition du corps du formulaire
+
+  submitForm.focus(); //on peut fermer avec la barre espace lorsque le formulaire est rempli
 }
 
 // fermeture du formulaire
 closeModal.addEventListener("click", manualCloseDelay); // par la croix
-submitForm.addEventListener("submit", autoCloseDelay); //par le bouton envoyer
-
-//fermeture du formulaire
-function closeFormModal() {
-  contactModal.style.display = "none";
-}
+submitForm.addEventListener("submit", manualCloseDelay); //par le bouton envoyer
 
 // delais de fermeture
 let delayToClose;
 function manualCloseDelay() {
   delayToClose = setTimeout(closeFormModal, 1000);
 }
-function autoCloseDelay() {
-  delayToClose = setTimeout(closeFormModal, 4000);
+
+//fermeture du formulaire
+function closeFormModal() {
+  main.getAttribute("aria-hidden", "false");
+  contactModal.getAttribute("aria-hidden", "true");
+  body.classList.remove("no-scroll");
+
+  contactModal.style.display = "none";
+  //openModal.focus();
 }
 
 //Evenements
@@ -163,6 +172,8 @@ function globalValidation() {
 
   if (validation === true) {
     modalError.innerHTML = "Votre message a bien été reçu, merci."; // si le formulaire est bien rempli, pas de message d'erreur
+    manualCloseDelay();
+    formulaire.reset(); // le formulaire s'efface
 
     contactModal.style.display = "none"; // Ferme la modale si OK
     const returnValues = {
@@ -174,9 +185,6 @@ function globalValidation() {
     console.log(returnValues);
     localStorage.setItem("returnValues", JSON.stringify(returnValues)); //stockage des données dans le localStorage
     //console.log(localStorage);
-
-    autoCloseDelay();
-    formulaire.reset(); // le formulaire s'efface
   } else {
     modalError.innerHTML = "Veuillez renseigner tous les champs"; // Afficher les erreurs si pas OK
   }
@@ -185,33 +193,40 @@ function globalValidation() {
 // ajouter un focus à tous les éléments de la modale
 const focusableElements =
   'button, [src], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-const modal = document.querySelector("#contact_modal"); // select the modal by it's id
 
-const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; // get first element to be focused inside modal
-const focusableContent = modal.querySelectorAll(focusableElements);
-const lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
+const firstFocusableElement =
+  contactModal.querySelectorAll(focusableElements)[0]; // pointer le 1er element focusable dans la modale
+const focusableContent = contactModal.querySelectorAll(focusableElements);
+const lastFocusableElement = focusableContent[focusableContent.length - 1]; // pointer le dernier element focusable dans la modale
 
 document.addEventListener("keydown", function (e) {
-  let isTabPressed = e.key === "Tab" || e.keyCode === 9;
+  let isTabPressed = e.key === "Tab"; //tabulation
 
   if (!isTabPressed) {
     return;
   }
 
   if (e.shiftKey) {
-    // if shift key pressed for shift + tab combination
+    // si shift + tab en même temps = on revient en arrière sur les éléments focusables
     if (document.activeElement === firstFocusableElement) {
-      lastFocusableElement.focus(); // add focus for the last focusable element
+      lastFocusableElement.focus(); // on met le focus sur le dernier élément
       e.preventDefault();
     }
   } else {
-    // if tab key is pressed
+    // si tab
     if (document.activeElement === lastFocusableElement) {
-      // if focused has reached to last focusable element then focus first focusable element after pressing tab
-      firstFocusableElement.focus(); // add focus for the first focusable element
+      // si le focus etait sur le dernier element alors on revient sur le 1er focusable
+      firstFocusableElement.focus(); // on met le focus sur le 1er element
       e.preventDefault();
     }
   }
 });
 
 firstFocusableElement.focus();
+
+// fermeture de la modale avec échape
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeFormModal();
+  }
+});

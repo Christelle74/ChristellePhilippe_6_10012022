@@ -82,20 +82,29 @@ form input {
 
 small {
   color: red;
-  font-size: 0.8rem;
+  font-size: 1rem;
   display: flex;
   justify-content: flex-start;
   padding: 0.12rem 0 0.6rem;
 }
 
 .input-error {
-  border: solid 0.12rem red;
+  border: solid 0.15rem red;
 }
 .input-validate {
-  border: solid 0.12rem rgb(2, 190, 2);
+  border: solid 0.15rem rgb(27, 160, 27);
 }
 
 .closeModal {
   background-color: #db8876;
   border: none;
+}
+
+#validation:hover {
+  background-color: #901c1c;
+  color: white;
+}
+
+.no-scroll {
+  overflow: hidden;
 }

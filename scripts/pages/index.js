@@ -14,11 +14,11 @@ const photographersDisplay = async () => {
   photographersIndexContainer.innerHTML = photographers
     .map(
       (photographer) =>
-        `
-  <article>
-    <a  href="./photographer.html?id=${photographer.id}">
-      <div role="figure">
-        <img class="photographer_picture" src="./assets/images/PhotographersIDPhotos/${photographer.portrait}" aria-label="${photographer.name} alt="${photographer.name}">
+        ` 
+  <article >
+    <a role="figure" href="./photographer.html?id=${photographer.id}">
+      <div >
+        <img role=img" class="photographer_picture" src="./assets/images/PhotographersIDPhotos/${photographer.portrait}" alt="${photographer.name}">
         <h2>${photographer.name}</h2>
       </div>
     </a>

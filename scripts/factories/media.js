@@ -16,8 +16,8 @@ class Image {
   createMediaCard() {
     return `
         <figure  class="media" >
-            <div id="mediaLink" data-id="${this.id}" >
-              <img  src="./assets/images/${this.imgPhotographerId}/${this.image}" alt="${this.title}"></img>
+            <div id="mediaLink" data-id="${this.id}" tabindex="0" >
+              <img  role="button" src="./assets/images/${this.imgPhotographerId}/${this.image}" alt="${this.title}"></img>
             </div>
             <figcaption id="details">
                 <h2 id="titre">${this.title}</h2>
@@ -36,7 +36,7 @@ class Image {
           <button class="lightbox_next"></button>
           <button class="lightbox_prev"></button>
           <div  class="lightbox_container"  data-id="${this.id}">
-            <img  id="imgBox" src="./assets/images/${this.imgPhotographerId}/${this.image}" alt="${this.title}" ></img>
+            <img  role="img" id="imgBox" src="./assets/images/${this.imgPhotographerId}/${this.image}" alt="${this.title}" ></img>
             <p class=titleCurrentImg>${this.title}</p>
           </div>
       </div>
@@ -58,8 +58,8 @@ class Video {
   createMediaCard() {
     return `
         <figure class="media" >
-          <div id="mediaLink" data-id="${this.id}">
-            <video  controls src="./assets/images/${this.videoPhotographerId}/${this.video}"  alt="${this.title}" type="video/mp4"></video>
+          <div id="mediaLink" data-id="${this.id}" tabindex="0">
+            <video  role="button" controls src="./assets/images/${this.videoPhotographerId}/${this.video}"  alt="${this.title}" type="video/mp4"></video>
           </div>
               
             <div id="details">
