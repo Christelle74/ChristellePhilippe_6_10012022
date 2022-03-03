@@ -35,6 +35,7 @@ export function mediaSort(PhotographerMedias) {
 
     // On vide le container galerie
     mediasContainer.innerHTML = "";
+
     // On regenère chaque médias de l'élément Html "article" avec le PhotographerMedias nouvellement trié
     displayGallery(PhotographerMedias);
   });

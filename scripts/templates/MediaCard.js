@@ -31,12 +31,6 @@ const Gallery = async () => {
 
   //rappel de la fonction displayGallery
   displayGallery(PhotographerMedias);
-
-  //rappel de la fonction des likes
-  likesIncrement(PhotographerMedias);
-
-  //rappel de la fonction de tri des medias
-  mediaSort(PhotographerMedias);
 };
 
 Gallery();
@@ -53,6 +47,11 @@ export function displayGallery(PhotographerMedias) {
     card.innerHTML = Template.createMediaCard();
     // console.log(Template); //affiche dans la console chaque média
   });
+
+  //rappel de la fonction de tri des medias
+  mediaSort(PhotographerMedias);
+  //rappel de la fonction des likes
+  likesIncrement(PhotographerMedias);
 
   //lightbox , récupération des médias à afficher dans la lightbox
   let lightbox = new Lightbox(PhotographerMedias);
@@ -82,17 +81,17 @@ export function displayGallery(PhotographerMedias) {
 
     // ajouter un focus à tous les éléments de la modale
     const lightboxDiv = document.querySelector("#lightbox");
-    console.log(lightboxDiv);
-    const focusableElts = 'button,  [tabindex]:not([tabindex="-1"])';
+    //console.log(lightboxDiv);
+    const focusableElts = 'button, [tabindex]:not([tabindex="-1"])';
 
     const firstFocusableElt = lightboxDiv.querySelectorAll(focusableElts)[0]; // pointer le 1er element focusable dans la modale
-    console.log(firstFocusableElt);
+    // console.log(firstFocusableElt);
     const focusableContents = lightboxDiv.querySelectorAll(focusableElts);
-    console.log(focusableContents);
+    // console.log(focusableContents);
     const lastFocusableElt = focusableContents[focusableContents.length - 1]; // pointer le dernier element focusable dans la modale
-    console.log(lastFocusableElt);
+    //                console.log(lastFocusableElt);
 
-    link.addEventListener("keyup", function (e) {
+    document.addEventListener("keyUP", function (e) {
       let isTabPressed = e.key === "Tab"; //tabulation
 
       if (!isTabPressed) {
@@ -114,7 +113,6 @@ export function displayGallery(PhotographerMedias) {
         }
       }
     });
-
     firstFocusableElt.focus();
   });
 }

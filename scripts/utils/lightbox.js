@@ -71,7 +71,7 @@ class Lightbox {
     });
     //console.log(closeBtn);//renvoie le bouton x
 
-    //  document.addEventListener("keyup", this.onKeyUp);
+    //document.addEventListener("keyup", this.onKeyUp);
   }
 
   //recherche dans la liste l'élement dont l'id et égale à l'id passé en paramètre

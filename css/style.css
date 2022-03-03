@@ -17,7 +17,6 @@ header {
   align-items: center;
   margin: 1.87rem;
   text-decoration: none;
-  width: 100%;
 }
 
 h1 {
@@ -58,7 +57,7 @@ p {
 
 .photographer_section article h2 {
   color: #d3573c;
-  font-size: 2.25rem;
+  font-size: 2rem;
 }
 
 .photographer_picture {
@@ -71,14 +70,17 @@ p {
 .photographer_city {
   font-size: 0.81rem;
   color: #901c1c;
+  font-weight: 600;
 }
 
 .photographer_tag {
   font-size: 0.62rem;
   color: black;
+  font-weight: 700;
 }
 
 .photographer_price {
   font-size: 0.56rem;
   color: #525252;
+  font-weight: 600;
 }
