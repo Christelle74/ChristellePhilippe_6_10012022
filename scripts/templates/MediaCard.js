@@ -79,42 +79,42 @@ export function displayGallery(PhotographerMedias) {
         return;
       }
     });
-  });
 
-  // ajouter un focus à tous les éléments de la modale
-  const lightboxDiv = document.querySelector("#lightbox");
-  console.log(lightboxDiv);
-  const focusableElements = 'button,  [tabindex]:not([tabindex="-1"])';
+    // ajouter un focus à tous les éléments de la modale
+    const lightboxDiv = document.querySelector("#lightbox");
+    console.log(lightboxDiv);
+    const focusableElts = 'button,  [tabindex]:not([tabindex="-1"])';
 
-  const firstFocusableElt = lightboxDiv.querySelectorAll(focusableElements)[0]; // pointer le 1er element focusable dans la modale
-  console.log(firstFocusableElt);
-  const focusableContent = lightboxDiv.querySelectorAll(focusableElements);
-  console.log(focusableContent);
-  const lastFocusableElement = focusableContent[focusableContent.length - 1]; // pointer le dernier element focusable dans la modale
-  console.log(lastFocusableElement);
+    const firstFocusableElt = lightboxDiv.querySelectorAll(focusableElts)[0]; // pointer le 1er element focusable dans la modale
+    console.log(firstFocusableElt);
+    const focusableContents = lightboxDiv.querySelectorAll(focusableElts);
+    console.log(focusableContents);
+    const lastFocusableElt = focusableContents[focusableContents.length - 1]; // pointer le dernier element focusable dans la modale
+    console.log(lastFocusableElt);
 
-  document.addEventListener("keydown", function (e) {
-    let isTabPressed = e.key === "Tab"; //tabulation
+    link.addEventListener("keyup", function (e) {
+      let isTabPressed = e.key === "Tab"; //tabulation
 
-    if (!isTabPressed) {
-      return;
-    }
-
-    if (e.shiftKey) {
-      // si shift + tab en même temps = on revient en arrière sur les éléments focusables
-      if (document.activeElement === firstFocusableElt) {
-        lastFocusableElement.focus(); // on met le focus sur le dernier élément
-        e.preventDefault();
+      if (!isTabPressed) {
+        return;
       }
-    } else {
-      // si tab
-      if (document.activeElement === lastFocusableElement) {
-        // si le focus etait sur le dernier element alors on revient sur le 1er focusable
-        firstFocusableElt.focus(); // on met le focus sur le 1er element
-        e.preventDefault();
-      }
-    }
-  });
 
-  firstFocusableElt.focus();
+      if (e.shiftKey) {
+        // si shift + tab en même temps = on revient en arrière sur les éléments focusables
+        if (document.activeElement === firstFocusableElt) {
+          lastFocusableElt.focus(); // on met le focus sur le dernier élément
+          e.preventDefault();
+        }
+      } else {
+        // si tab
+        if (document.activeElement === lastFocusableElt) {
+          // si le focus etait sur le dernier element alors on revient sur le 1er focusable
+          firstFocusableElt.focus(); // on met le focus sur le 1er element
+          e.preventDefault();
+        }
+      }
+    });
+
+    firstFocusableElt.focus();
+  });
 }
