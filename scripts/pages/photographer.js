@@ -38,7 +38,7 @@ const photographerProfilDisplay = async () => {
   <div tabindex="0" class="photograph-profil" aria-label="profil du photographe ${photographer.name}">
       <div  class="photograph_details" role="text" >
           <h2>${photographer.name}</h2>
-          <p class="photograph_city">${photographer.city}, ${photographer.country}</p>
+          <h3 class="photograph_city">${photographer.city}, ${photographer.country}</h3>
           <p class="photograp_tag">${photographer.tagline}</p>
       </div>
   
