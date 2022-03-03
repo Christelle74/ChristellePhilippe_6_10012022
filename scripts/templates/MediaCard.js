@@ -1,5 +1,10 @@
-import { likesArray, likesIncrement } from "../utils/likes.js";
+import { likesIncrement } from "../utils/likes.js";
 import { mediaSort } from "../utils/dropDown.js";
+import { Lightbox } from "../utils/lightbox.js";
+import { MediaFactory } from "../factories/media.js";
+
+/*global fetchMedias, medias,*/
+/*eslint no-undef: "error"*/
 
 /**
  * création de la galerie photos et gestion des likes, du tri et de la lightbox
@@ -44,7 +49,7 @@ export function displayGallery(PhotographerMedias) {
     //console.log(card);
 
     //recupération de la mediaFactory sans le mot cle new (fonction static)
-    let Template = mediaFactory.createMediaCard(media);
+    let Template = MediaFactory.createMediaCard(media);
     card.innerHTML = Template.createMediaCard();
     // console.log(Template); //affiche dans la console chaque média
   });
@@ -64,13 +69,52 @@ export function displayGallery(PhotographerMedias) {
 
   // ouvrir la lightbox par le clavier toucher entrée
   links.forEach((link) => {
-    link.addEventListener("keydown", (e) => {
+    link.addEventListener("keyup", (e) => {
       const entrer = e.key;
 
       if (entrer === "Enter") {
         //alert("ok");
         lightbox.show(e.currentTarget.dataset.id);
+      } else {
+        return;
       }
     });
   });
+
+  // ajouter un focus à tous les éléments de la modale
+  const lightboxDiv = document.querySelector("#lightbox");
+  console.log(lightboxDiv);
+  const focusableElements = 'button,  [tabindex]:not([tabindex="-1"])';
+
+  const firstFocusableElt = lightboxDiv.querySelectorAll(focusableElements)[0]; // pointer le 1er element focusable dans la modale
+  console.log(firstFocusableElt);
+  const focusableContent = lightboxDiv.querySelectorAll(focusableElements);
+  console.log(focusableContent);
+  const lastFocusableElement = focusableContent[focusableContent.length - 1]; // pointer le dernier element focusable dans la modale
+  console.log(lastFocusableElement);
+
+  document.addEventListener("keydown", function (e) {
+    let isTabPressed = e.key === "Tab"; //tabulation
+
+    if (!isTabPressed) {
+      return;
+    }
+
+    if (e.shiftKey) {
+      // si shift + tab en même temps = on revient en arrière sur les éléments focusables
+      if (document.activeElement === firstFocusableElt) {
+        lastFocusableElement.focus(); // on met le focus sur le dernier élément
+        e.preventDefault();
+      }
+    } else {
+      // si tab
+      if (document.activeElement === lastFocusableElement) {
+        // si le focus etait sur le dernier element alors on revient sur le 1er focusable
+        firstFocusableElt.focus(); // on met le focus sur le 1er element
+        e.preventDefault();
+      }
+    }
+  });
+
+  firstFocusableElt.focus();
 }

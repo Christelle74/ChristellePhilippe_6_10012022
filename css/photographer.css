@@ -6,6 +6,7 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
 }
+
 .photograph-header {
   display: flex;
   flex-direction: column;
@@ -39,6 +40,9 @@ main {
   color: #d3573c;
   font-size: 4rem;
   margin: 0;
+}
+.photograph_details p {
+  margin: 1.5rem 0;
 }
 
 .photograph_city {

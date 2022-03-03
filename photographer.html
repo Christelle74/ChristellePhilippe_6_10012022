@@ -19,13 +19,14 @@
   </head>
 
   <body id="body">
-    <header role="banner">
+    <header>
       <a href="index.html">
         <img
-          role="img"
           src="assets/images/logo.png"
           class="logo"
-          alt="FishEye Home Page"
+          title="FishEye Home Page"
+          aria-label="Go to Fisheye Home Page"
+          role="link"
         />
       </a>
     </header>
@@ -34,21 +35,13 @@
       <section class="photograph-header"></section>
 
       <div class="galleryContainer"></div>
-
-      <!--<div class="lightbox">
-        <button class="lightbox_close">Fermer</button>
-        <button class="lightbox_next">Suivant</button>
-        <button class="lightbox_prev">Précédent</button>
-        <div class="lightbox_container">
-          <img src="https://picsum.photos/900/900" alt="">
-        </div>
-      </div>-->
     </main>
 
+    <!--formulaire de contact -->
     <div
       id="contact_modal"
       role="dialog"
-      tabindex="-1"
+      tabindex="0"
       aria-hidden="true"
       aria-describedby="photographerContactName"
     >
@@ -60,7 +53,6 @@
               src="assets/icons/close.svg"
               alt="Fermer le formulaire"
               aria-label="Close"
-              role="img"
             />
           </button>
         </header>
@@ -80,7 +72,10 @@
               aria-labelledby="first"
               aria-required="true"
             /><br />
-            <small id="firstError"></small>
+            <small
+              id="firstError"
+              aria-label="saisie du prénom incorrecte"
+            ></small>
           </div>
 
           <div class="formData">
@@ -93,7 +88,7 @@
               aria-labelledby="last"
               aria-required="true"
             /><br />
-            <small id="lastError"></small>
+            <small id="lastError" aria-label="saisie du nom incorrecte"></small>
           </div>
 
           <div class="formData">
@@ -106,7 +101,10 @@
               aria-labelledby="email"
               aria-required="true"
             /><br />
-            <small id="emailError"></small>
+            <small
+              id="emailError"
+              aria-label="saisie de l'email incorrecte"
+            ></small>
           </div>
 
           <div class="formData">
@@ -117,33 +115,35 @@
               aria-labelledby="message"
               aria-required="true"
             /><br />
-            <small id="messageError"></small>
+            <small
+              id="messageError"
+              aria-label="saisie du message incorrecte"
+            ></small>
           </div>
 
           <button
-            class="contact_button"
+            class="validation_button"
             type="submit"
             value="Envoyer"
             id="validation"
           >
             Envoyer
           </button>
-
-          <!--<button id="validation" class="contact_button">Envoyer</button>-->
         </form>
         <small id="modalError"></small>
       </div>
     </div>
+    <!--fin formulaire de contact -->
 
     <script src="scripts/api/fetchApi.js"></script>
 
     <script src="scripts/pages/photographer.js"></script>
     <script type="module" src="scripts/templates/MediaCard.js"></script>
-    <script src="scripts/factories/media.js"></script>
+    <script type="module" src="scripts/factories/media.js"></script>
 
     <script src="scripts/utils/contactForm.js"></script>
 
-    <script src="scripts/utils/lightbox.js"></script>
+    <script type="module" src="scripts/utils/lightbox.js"></script>
     <script type="module" src="scripts/utils/likes.js"></script>
     <script type="module" src="scripts/utils/dropDown.js"></script>
   </body>

@@ -1,12 +1,13 @@
+/*global firstError, lastError, emailError, messageError, modalError*/
+/*eslint no-undef: "error"*/
+
 // DOM Elements : on pointe les éléments du DOM
 const firstName = document.querySelector("input[name=first]");
 const lastName = document.querySelector("input[name=last]");
 const email = document.querySelector("input[name=email]");
 const message = document.querySelector("input[name=message]");
-
-const openModal = document.getElementById("openForm"); //bouton contactez-moi
+//const openModal = document.getElementsByClassName("contact_button"); //bouton contactez-moi
 const contactModal = document.querySelector("#contact_modal"); //corp du formulaire
-const form = document.querySelector(".form");
 const closeModal = document.querySelector(".closeModal"); //croix de fermeture
 const formulaire = document.querySelector("#formulaire");
 //console.log(openModal);
@@ -16,39 +17,35 @@ const submitForm = document.querySelector("#validation");
 
 const mainPage = document.querySelector("#main");
 const body = document.querySelector("#body");
-
 //openModal.addEventListener("click", launchModal);
 
 function launchModal() {
-  main.getAttribute("aria-hidden", "true");
+  mainPage.getAttribute("aria-hidden", "true");
   contactModal.getAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
-
   contactModal.style.display = "block"; // apparition du corps du formulaire
   let inputs = Array.from(document.querySelectorAll(".input-validate")); //effacer le contour vert des champs
   inputs.forEach((input) => input.classList.remove("input-validate"));
-
   submitForm.focus(); //on peut fermer avec la barre espace lorsque le formulaire est rempli
 }
 
-// fermeture du formulaire
-closeModal.addEventListener("click", manualCloseDelay); // par la croix
-submitForm.addEventListener("submit", manualCloseDelay); //par le bouton envoyer
+// evenements de fermeture du formulaire
+closeModal.addEventListener("click", closeDelay); // par la croix
+submitForm.addEventListener("submit", closeDelay); //par le bouton envoyer
 
 // delais de fermeture
 let delayToClose;
-function manualCloseDelay() {
+function closeDelay() {
   delayToClose = setTimeout(closeFormModal, 1000);
 }
 
 //fermeture du formulaire
 function closeFormModal() {
-  main.getAttribute("aria-hidden", "false");
+  mainPage.getAttribute("aria-hidden", "false");
   contactModal.getAttribute("aria-hidden", "true");
   body.classList.remove("no-scroll");
-
   contactModal.style.display = "none";
-  //openModal.focus();
+  document.querySelector(".contact_button").focus(); // à la fermeture on remet le focus sur le bouton contact
 }
 
 //Evenements
@@ -171,10 +168,7 @@ function globalValidation() {
   }
 
   if (validation === true) {
-    modalError.innerHTML = "Votre message a bien été reçu, merci."; // si le formulaire est bien rempli, pas de message d'erreur
-    manualCloseDelay();
-    formulaire.reset(); // le formulaire s'efface
-
+    modalError.innerHTML = ""; // si le formulaire est bien rempli, pas de message d'erreur
     contactModal.style.display = "none"; // Ferme la modale si OK
     const returnValues = {
       prenom: document.querySelector("#first").value,
@@ -185,6 +179,8 @@ function globalValidation() {
     console.log(returnValues);
     localStorage.setItem("returnValues", JSON.stringify(returnValues)); //stockage des données dans le localStorage
     //console.log(localStorage);
+    closeDelay();
+    formulaire.reset(); // le formulaire s'efface
   } else {
     modalError.innerHTML = "Veuillez renseigner tous les champs"; // Afficher les erreurs si pas OK
   }
@@ -193,7 +189,6 @@ function globalValidation() {
 // ajouter un focus à tous les éléments de la modale
 const focusableElements =
   'button, [src], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-
 const firstFocusableElement =
   contactModal.querySelectorAll(focusableElements)[0]; // pointer le 1er element focusable dans la modale
 const focusableContent = contactModal.querySelectorAll(focusableElements);

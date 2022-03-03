@@ -1,8 +1,11 @@
+/*global body,*/
+/*eslint no-undef: "error"*/
+
 class Lightbox {
   constructor(listMedias) {
     this.currentMedia = null;
     this.listMedias = listMedias; //avoir la liste des medias et pouvoir récupérer le précédent et le suivant
-    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
     this.manageEvent();
   }
 
@@ -68,7 +71,7 @@ class Lightbox {
     });
     //console.log(closeBtn);//renvoie le bouton x
 
-    document.addEventListener("keydown", this.onKeyDown);
+    //  document.addEventListener("keyup", this.onKeyUp);
   }
 
   //recherche dans la liste l'élement dont l'id et égale à l'id passé en paramètre
@@ -76,36 +79,27 @@ class Lightbox {
     return this.listMedias.find((media) => media.id == id);
   }
 
-  //affiche le media et injecte "show" dans la lightbox pour que la modale s'ouvre
+  //affiche le media et injecte "show" dans la lightbox po  ur que la modale s'ouvre
   display() {
     const container = document.querySelector(".lightbox_container");
-    //console.log(container);
+    document.addEventListener("keyup", this.onKeyUp);
 
     if (this.currentMedia.image) {
-      container.innerHTML =
-        '<p> <img id="imgBox" src="./assets/images/' +
-        this.currentMedia.photographerId +
-        "/" +
-        this.currentMedia.image +
-        '" alt="Lonesome"><p class="titleCurrentImg">' +
-        this.currentMedia.title +
-        "</p>";
+      container.innerHTML = `
+      <img id="imgBox" src="./assets/images/${this.currentMedia.photographerId}/${this.currentMedia.image}" 
+       aria-label="${this.currentMedia.title}"/>
+      <p class="titleCurrentImg" tabindex="0" aria-label="titre du média">${this.currentMedia.title}</p>`;
     } else {
-      container.innerHTML =
-        '<p> <video controls id="imgBox" src="./assets/images/' +
-        this.currentMedia.photographerId +
-        "/" +
-        this.currentMedia.video +
-        '" alt="Lonesome"><p class="titleCurrentImg">' +
-        this.currentMedia.title +
-        "</p>";
-      //alert("je sais pas faire !");
+      container.innerHTML = `
+      <video controls id="imgBox" src="./assets/images/${this.currentMedia.photographerId}/${this.currentMedia.video}" 
+       aria-label="${this.currentMedia.title}"/>
+      <p class="titleCurrentImg" tabindex="0" aria-label="titre du média">${this.currentMedia.title}</p>`;
     }
 
     document.querySelector(".lightbox").classList.add("show");
   }
   //sortir de la lightbox avec le bouton escape du clavier et naviguer dans la lightbox avec les flèches
-  onKeyDown(e) {
+  onKeyUp(e) {
     if (e.key === "Escape") {
       this.close(e);
     } else if (e.key === "ArrowLeft") {
@@ -118,8 +112,10 @@ class Lightbox {
   //fermeture de la modale par la croix
   close() {
     document.querySelector(".lightbox").classList.remove("show");
-    document.removeEventListener("keydown", this.onKeyDown);
+    document.removeEventListener("keyup", this.onKeyUp);
 
     body.classList.remove("no-scroll");
   }
 }
+
+export { Lightbox };

@@ -32,7 +32,8 @@ h1 {
 }
 
 p {
-  line-height: 0.5rem;
+  line-height: 0.1rem;
+  margin: 0.5rem;
 }
 
 /*section grille de photographes */

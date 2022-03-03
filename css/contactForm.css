@@ -99,10 +99,21 @@ small {
   background-color: #db8876;
   border: none;
 }
-
-#validation:hover {
-  background-color: #901c1c;
+.validation_button {
+  font-size: 1.25rem;
+  font-weight: bold;
   color: white;
+  padding: 0.68rem;
+  width: 10.62rem;
+  height: 4.37rem;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 0.31rem;
+  cursor: pointer;
+}
+.validation_button:hover {
+  background-color: #901c1c;
+  color: black;
 }
 
 .no-scroll {

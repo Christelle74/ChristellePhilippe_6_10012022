@@ -48,8 +48,8 @@
 #likes {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 25%;
+  justify-content: space-between;
+  width: 4rem;
 }
 
 #like-number {

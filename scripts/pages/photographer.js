@@ -1,10 +1,11 @@
+/*global fetchPhotographers, photographers*/
+/*eslint no-undef: "error"*/
+
 /**
  *  page du profil du photographe, on récupère  les données media du photographe en appelant la fetch
- * dispatching des données (map), et fabrication du gabarit Html
- *
- * recherche des photographes par leur id (urlSearchParams) et méthode fin
- *
- * fabrication du gabarit de la page profil
+ * dispatching des données (map)
+ *recherche des photographes par leur id (urlSearchParams) et méthode find
+ *fabrication du gabarit de la page profil
  */
 
 const photographerProfilContainer =
@@ -29,34 +30,34 @@ const photographerProfilDisplay = async () => {
   const photographeConstactName = document.querySelector(
     "#photographerContactName"
   ); //console.log(photographeConstactName);
-  photographeConstactName.innerHTML = "<br/>" + photographer.name;
+  photographeConstactName.innerHTML =
+    "Contactez-moi" + "<br/>" + photographer.name;
 
   //creation du profil du photographe : détails, photo, bouton de contact, dropdown, footer
   const photographerProfil = `
-  <div class="photograph-profil"  aria-label="profil du photographe">
+  <div tabindex="0" class="photograph-profil" aria-label="profil du photographe ${photographer.name}">
       <div  class="photograph_details" role="text" >
           <h2>${photographer.name}</h2>
           <p class="photograph_city">${photographer.city}, ${photographer.country}</p>
           <p class="photograp_tag">${photographer.tagline}</p>
       </div>
   
-      <button id="openForm" class="contact_button" onclick="launchModal()"  aria-labelledby="photographerContactName">Contactez-moi</button>
-  
+      <button id="openForm"  class="contact_button" onclick="launchModal()"  aria-labelledby="photographerContactName">Contactez-moi</button>
   
       <div>
-      <img role="img" class="photograph_picture" src="./assets/images/PhotographersIDPhotos/${photographer.portrait}"  alt=" ${photographer.name}">
+        <img role="img" class="photograph_picture" src="./assets/images/PhotographersIDPhotos/${photographer.portrait}"  alt=" ${photographer.name}">
       </div>
   </div>
 
 
-  
-
-      <div id="tri" > 
-          <label class= "dropbox" for="selection"  aria-label="trier par">Trier par</label>
-          <select class="btn-select" name="select" id="selection">
-              <option class="option" value="popularite">Popularité</option>
-              <option class="option" value="date">Date</option>
-              <option class="option" value="titre">Titre</option>
+      <div id="tri"> 
+          <label class= "dropbox" for="selection"  >Trier par</label>
+          <select  class="btn-select" name="select" id="selection"  aria-label="trier par" >
+              <option tabindex="0" class="option" value="popularite" aria-current="page">Popularité</option>
+              <option disabled>──────────</option>
+              <option tabindex="0"  class="option" value="date">Date</option>
+              <option disabled>──────────</option>
+              <option tabindex="0" class="option" value="titre">Titre</option>
           </select>
       </div> 
 
