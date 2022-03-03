@@ -21,7 +21,7 @@ const photographersDisplay = async () => {
   <article tabindex="0"  aria-label="photographe ${photographer.name}">
     <a  href="./photographer.html?id=${photographer.id}">
       <div >
-        <img   class="photographer_picture" src="./assets/images/PhotographersIDPhotos/${photographer.portrait}" >
+        <img   class="photographer_picture" src="./assets/images/PhotographersIDPhotos/${photographer.portrait}" alt="${photographer.name}">
         <h2 aria-label="nom du photographe">${photographer.name}</h2>
       </div>
     </a>
