@@ -1,5 +1,4 @@
 import { likesIncrement } from "../utils/likes.js";
-import { mediaSort } from "../utils/dropDown.js";
 import { Lightbox } from "../utils/lightbox.js";
 import { MediaFactory } from "../factories/media.js";
 
@@ -16,26 +15,63 @@ import { MediaFactory } from "../factories/media.js";
 const mediasContainer = document.querySelector(".galleryContainer");
 //console.log(medias);//dans la console fait apparaitre l'array de tous les medias
 
+var PhotographerMedias = [];
+
 const Gallery = async () => {
   await fetchMedias();
 
-  //recherche de l'id du photographe dans l'url-----------
+  //recherche de l'id du photographe dans l'url
   const idPhotographer = window.location.search.slice(4);
   //console.log(idPhotographer);
 
-  //recherche des medias par photographe d'après son id -----------------------------------
-  const PhotographerMedias = medias.filter(
+  //recherche des medias par photographe d'après son id
+  PhotographerMedias = medias.filter(
     (media) => media.photographerId === parseInt(idPhotographer)
   );
-  console.log(PhotographerMedias); //array des medias du photographe
+  //console.log(PhotographerMedias); //array des medias du photographe
 
-  //rappel de la fonction displayGallery
-  displayGallery(PhotographerMedias);
+  //rappel de la fonction displayGallery ci-dessous
+  displayGallery();
 };
+
+//gestion du tri des medias avec la methode sort
+function mediaSort() {
+  const selectBox = document.getElementById("selection");
+
+  console.log("jesuislà");
+
+  selectBox.addEventListener("change", (event) => {
+    if (event.target.value === "popularite") {
+      PhotographerMedias.sort(function (a, b) {
+        return b.likes - a.likes;
+      });
+    } else if (event.target.value === "date") {
+      PhotographerMedias.sort(function (a, b) {
+        return new Date(b.date) - new Date(a.date);
+      });
+    } else if (event.target.value === "titre") {
+      PhotographerMedias.sort(function (a, b) {
+        return a.title.localeCompare(b.title);
+      });
+    } else {
+      PhotographerMedias.sort((a, b) => {
+        return b.likes - a.likes;
+      });
+    }
+    //rappel de la fonction displayGallery pour re-régénérer les medias selon le tri
+    displayGallery();
+    //console.log(event.target.value);
+  });
+}
 
 Gallery();
 
-export function displayGallery(PhotographerMedias) {
+function displayGallery() {
+  console.log(PhotographerMedias);
+
+  // On vide le container galerie avant de pouvoir l'alimenter lors des tris par exemple
+  mediasContainer.innerHTML = "";
+
   PhotographerMedias.forEach((media) => {
     //création pour chaque médias de l'élément Html "article"
     let card = document.createElement("article");
@@ -45,11 +81,10 @@ export function displayGallery(PhotographerMedias) {
     //recupération de la mediaFactory sans le mot cle new (fonction static)
     let Template = MediaFactory.createMediaCard(media);
     card.innerHTML = Template.createMediaCard();
-    // console.log(Template); //affiche dans la console chaque média
+
+    console.log(Template); //affiche dans la console chaque média
   });
 
-  //rappel de la fonction de tri des medias
-  mediaSort(PhotographerMedias);
   //rappel de la fonction des likes
   likesIncrement(PhotographerMedias);
 
@@ -91,7 +126,7 @@ export function displayGallery(PhotographerMedias) {
     const lastFocusableElt = focusableContents[focusableContents.length - 1]; // pointer le dernier element focusable dans la modale
     //                console.log(lastFocusableElt);
 
-    document.addEventListener("keyUP", function (e) {
+    document.addEventListener("keydown", function (e) {
       let isTabPressed = e.key === "Tab"; //tabulation
 
       if (!isTabPressed) {
@@ -115,4 +150,6 @@ export function displayGallery(PhotographerMedias) {
     });
     firstFocusableElt.focus();
   });
+
+  mediaSort();
 }

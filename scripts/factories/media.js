@@ -37,10 +37,10 @@ class Image {
           <button  class="lightbox_prev" aria-label="media precedent"></button>
           <div  class="lightbox_container"  data-id="${this.id}">
             <img  role="img" id="imgBox" src="./assets/images/${this.imgPhotographerId}/${this.image}" alt="${this.title}" aria-label="${this.title}"></img>
-            <p class=titleCurrentImg>${this.title}</p>
+            <p class="titleCurrentImg">${this.title}</p>
           </div>
       </div>
-        
+         
         `;
   }
 }
@@ -79,7 +79,7 @@ class Video {
         <button  class="lightbox_prev" aria-label="media précédent"></button>
         <div  class="lightbox_container" data-id="${this.id}">
           <video  id="imgBox" src="./assets/images/${this.videoPhotographerId}/${this.video}"  alt="${this.title}" aria-label="${this.title}"></video>
-          <p class=titleCurrentImg>${this.title}</p>
+          <p class="titleCurrentImg">${this.title}</p>
         </div>
       </div>
        `;
