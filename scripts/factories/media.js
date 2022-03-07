@@ -36,11 +36,9 @@ class Image {
           <button  class="lightbox_next" aria-label="media suivant"></button>
           <button  class="lightbox_prev" aria-label="media precedent"></button>
           <div  class="lightbox_container"  data-id="${this.id}">
-            
+          <h2 class="titleCurrentImg" tabindex="0" aria-label="${this.title}">${this.title}</h2>
           </div>
-      </div>
-         
-        `;
+      </div>`;
   }
 }
 
@@ -77,10 +75,9 @@ class Video {
         <button  class="lightbox_next" aria-label="media suivant"></button>
         <button  class="lightbox_prev" aria-label="media précédent"></button>
         <div  class="lightbox_container" data-id="${this.id}">
-          
+        <h2 class="titleCurrentImg" tabindex="0" aria-label="${this.title}">${this.title}</h2>
         </div>
-      </div>
-       `;
+      </div>`;
   }
 }
 

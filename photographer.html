@@ -73,10 +73,7 @@
               aria-labelledby="first"
               aria-required="true"
             /><br />
-            <small
-              id="firstError"
-              aria-label="saisie du prénom incorrecte"
-            ></small>
+            <small id="firstError"></small>
           </div>
 
           <div class="formData">
@@ -89,7 +86,7 @@
               aria-labelledby="last"
               aria-required="true"
             /><br />
-            <small id="lastError" aria-label="saisie du nom incorrecte"></small>
+            <small id="lastError"></small>
           </div>
 
           <div class="formData">
@@ -102,10 +99,7 @@
               aria-labelledby="email"
               aria-required="true"
             /><br />
-            <small
-              id="emailError"
-              aria-label="saisie de l'email incorrecte"
-            ></small>
+            <small id="emailError"></small>
           </div>
 
           <div class="formData">
@@ -116,10 +110,7 @@
               aria-labelledby="message"
               aria-required="true"
             /><br />
-            <small
-              id="messageError"
-              aria-label="saisie du message incorrecte"
-            ></small>
+            <small id="messageError"></small>
           </div>
 
           <button
@@ -131,7 +122,11 @@
             Envoyer
           </button>
         </form>
-        <small id="modalError"></small>
+        <small
+          id="modalError"
+          tabindex="0"
+          aria-label="veuillez compléter le formulaire correctement"
+        ></small>
       </div>
     </div>
     <!--fin formulaire de contact -->

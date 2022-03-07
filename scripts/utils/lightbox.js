@@ -88,12 +88,12 @@ class Lightbox {
       container.innerHTML = `
       <img id="imgBox" src="./assets/images/${this.currentMedia.photographerId}/${this.currentMedia.image}" 
        aria-label="${this.currentMedia.title}"/>
-      <h2 class="titleCurrentImg" tabindex="0"  aria-label="titre du média">${this.currentMedia.title}</h2>`;
+      <h2 class="titleCurrentImg" tabindex="0" >${this.currentMedia.title}</h2>`;
     } else {
       container.innerHTML = `
       <video controls id="imgBox" src="./assets/images/${this.currentMedia.photographerId}/${this.currentMedia.video}" 
        aria-label="${this.currentMedia.title}"></video>
-      <h2 class="titleCurrentImg" tabindex="0" aria-label="titre du média">${this.currentMedia.title}</h2>`;
+      <h2 class="titleCurrentImg" tabindex="0" >${this.currentMedia.title}</h2>`;
     }
 
     document.querySelector(".lightbox").classList.add("show");
