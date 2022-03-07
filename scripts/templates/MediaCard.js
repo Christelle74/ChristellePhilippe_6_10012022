@@ -15,12 +15,13 @@ import { MediaFactory } from "../factories/media.js";
 const mediasContainer = document.querySelector(".galleryContainer");
 //console.log(medias);//dans la console fait apparaitre l'array de tous les medias
 
+//tableau vide des medias qu'on remplira suivant la fonction utilisée (tri, galerie)
 var PhotographerMedias = [];
 
 const Gallery = async () => {
   await fetchMedias();
 
-  //recherche de l'id du photographe dans l'url
+  //recherche de l'id du photographe dans l'url, slice méthode pour obtenir seulement l'id du photographe
   const idPhotographer = window.location.search.slice(4);
   //console.log(idPhotographer);
 
@@ -28,17 +29,15 @@ const Gallery = async () => {
   PhotographerMedias = medias.filter(
     (media) => media.photographerId === parseInt(idPhotographer)
   );
-  //console.log(PhotographerMedias); //array des medias du photographe
+  //console.log(PhotographerMedias); //tableau  des medias du photographe
 
-  //rappel de la fonction displayGallery ci-dessous
+  //rappel de la fonction displayGallery ci-dessous, qui met en place les medias dans la galerie
   displayGallery();
 };
 
 //gestion du tri des medias avec la methode sort
 function mediaSort() {
   const selectBox = document.getElementById("selection");
-
-  console.log("jesuislà");
 
   selectBox.addEventListener("change", (event) => {
     if (event.target.value === "popularite") {
@@ -67,7 +66,7 @@ function mediaSort() {
 Gallery();
 
 function displayGallery() {
-  console.log(PhotographerMedias);
+  //console.log(PhotographerMedias);
 
   // On vide le container galerie avant de pouvoir l'alimenter lors des tris par exemple
   mediasContainer.innerHTML = "";
@@ -81,8 +80,7 @@ function displayGallery() {
     //recupération de la mediaFactory sans le mot cle new (fonction static)
     let Template = MediaFactory.createMediaCard(media);
     card.innerHTML = Template.createMediaCard();
-
-    console.log(Template); //affiche dans la console chaque média
+    //console.log(Template); //affiche dans la console chaque média
   });
 
   //rappel de la fonction des likes
@@ -90,7 +88,7 @@ function displayGallery() {
 
   //lightbox , récupération des médias à afficher dans la lightbox
   let lightbox = new Lightbox(PhotographerMedias);
-  //console.log(lightbox); //retourne l'array des médias
+  // console.log(lightbox); //retourne l'array des médias
 
   let links = document.querySelectorAll("#mediaLink");
   //console.log(links);
@@ -113,42 +111,6 @@ function displayGallery() {
         return;
       }
     });
-
-    // ajouter un focus à tous les éléments de la modale
-    const lightboxDiv = document.querySelector("#lightbox");
-    //console.log(lightboxDiv);
-    const focusableElts = 'button, [tabindex]:not([tabindex="-1"])';
-
-    const firstFocusableElt = lightboxDiv.querySelectorAll(focusableElts)[0]; // pointer le 1er element focusable dans la modale
-    // console.log(firstFocusableElt);
-    const focusableContents = lightboxDiv.querySelectorAll(focusableElts);
-    // console.log(focusableContents);
-    const lastFocusableElt = focusableContents[focusableContents.length - 1]; // pointer le dernier element focusable dans la modale
-    //                console.log(lastFocusableElt);
-
-    document.addEventListener("keydown", function (e) {
-      let isTabPressed = e.key === "Tab"; //tabulation
-
-      if (!isTabPressed) {
-        return;
-      }
-
-      if (e.shiftKey) {
-        // si shift + tab en même temps = on revient en arrière sur les éléments focusables
-        if (document.activeElement === firstFocusableElt) {
-          lastFocusableElt.focus(); // on met le focus sur le dernier élément
-          e.preventDefault();
-        }
-      } else {
-        // si tab
-        if (document.activeElement === lastFocusableElt) {
-          // si le focus etait sur le dernier element alors on revient sur le 1er focusable
-          firstFocusableElt.focus(); // on met le focus sur le 1er element
-          e.preventDefault();
-        }
-      }
-    });
-    firstFocusableElt.focus();
   });
 
   mediaSort();

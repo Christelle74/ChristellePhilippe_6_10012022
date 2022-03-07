@@ -31,13 +31,12 @@ class Image {
 
 
 
-        <div id="lightbox" tabindex="0" class="lightbox" arial-label="${this.title}" role="dialog" aria-modal="true">
+        <div id="lightbox" tabindex="0" class="lightbox" arial-label="${this.title}"  role="dialog" aria-modal="true">
           <button  class="lightbox_close" aria-label="fermer"></button>
           <button  class="lightbox_next" aria-label="media suivant"></button>
           <button  class="lightbox_prev" aria-label="media precedent"></button>
           <div  class="lightbox_container"  data-id="${this.id}">
-            <img  role="img" id="imgBox" src="./assets/images/${this.imgPhotographerId}/${this.image}" alt="${this.title}" aria-label="${this.title}"></img>
-            <p class="titleCurrentImg">${this.title}</p>
+            
           </div>
       </div>
          
@@ -73,13 +72,12 @@ class Video {
       
       
       
-      <div  class="lightbox " arial-label="${this.title}" tabindex="0" role="dialog" aria-modal="true">
+      <div  class="lightbox " arial-label="${this.title}" tabindex="0"  role="dialog" aria-modal="true">
         <button  class="lightbox_close" aria-label="fermer"></button>
         <button  class="lightbox_next" aria-label="media suivant"></button>
         <button  class="lightbox_prev" aria-label="media précédent"></button>
         <div  class="lightbox_container" data-id="${this.id}">
-          <video  id="imgBox" src="./assets/images/${this.videoPhotographerId}/${this.video}"  alt="${this.title}" aria-label="${this.title}"></video>
-          <p class="titleCurrentImg">${this.title}</p>
+          
         </div>
       </div>
        `;

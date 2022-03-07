@@ -81,23 +81,25 @@ class Lightbox {
 
   //affiche le media et injecte "show" dans la lightbox po  ur que la modale s'ouvre
   display() {
-    const container = document.querySelector(".lightbox_container");
+    let container = document.querySelector(".lightbox_container");
     document.addEventListener("keyup", this.onKeyUp);
 
     if (this.currentMedia.image) {
       container.innerHTML = `
       <img id="imgBox" src="./assets/images/${this.currentMedia.photographerId}/${this.currentMedia.image}" 
        aria-label="${this.currentMedia.title}"/>
-      <p class="titleCurrentImg" tabindex="0" aria-label="titre du média">${this.currentMedia.title}</p>`;
+      <h2 class="titleCurrentImg" tabindex="0"  aria-label="titre du média">${this.currentMedia.title}</h2>`;
     } else {
       container.innerHTML = `
       <video controls id="imgBox" src="./assets/images/${this.currentMedia.photographerId}/${this.currentMedia.video}" 
-       aria-label="${this.currentMedia.title}"/>
-      <p class="titleCurrentImg" tabindex="0" aria-label="titre du média">${this.currentMedia.title}</p>`;
+       aria-label="${this.currentMedia.title}"></video>
+      <h2 class="titleCurrentImg" tabindex="0" aria-label="titre du média">${this.currentMedia.title}</h2>`;
     }
 
     document.querySelector(".lightbox").classList.add("show");
+    this.LightboxFocus();
   }
+
   //sortir de la lightbox avec le bouton escape du clavier et naviguer dans la lightbox avec les flèches
   onKeyUp(e) {
     if (e.key === "Escape") {
@@ -109,12 +111,31 @@ class Lightbox {
     }
   }
 
-  //fermeture de la modale par la croix
+  //fermer la lightbox par la croix
   close() {
     document.querySelector(".lightbox").classList.remove("show");
     document.removeEventListener("keyup", this.onKeyUp);
-
+    document.querySelector(".contact_button ").focus(); //à la fermeture, le focus est remis sur le bouton contactez-moi
     body.classList.remove("no-scroll");
+  }
+
+  //garder le focus dans la lightbox
+  LightboxFocus() {
+    const lightboxTitreMedia = document.querySelector(".titleCurrentImg");
+    lightboxTitreMedia.focus();
+    const closeButton = document.querySelector(".lightbox_close");
+    const arrowLeft = document.querySelector(".lightbox_prev");
+    const arrowRight = document.querySelector(".lightbox_next");
+
+    lightboxTitreMedia.addEventListener("focusout", () => {
+      arrowRight.focus();
+    });
+    arrowRight.addEventListener("focusout", () => {
+      arrowLeft.focus();
+    });
+    arrowLeft.addEventListener("focusout", () => {
+      closeButton.focus();
+    });
   }
 }
 
