@@ -1,4 +1,6 @@
-/*global fetchPhotographers, photographers*/
+import { fetchPhotographers } from "../api/fetchApi";
+
+/*global photographers*/
 /*eslint no-undef: "error"*/
 
 /**

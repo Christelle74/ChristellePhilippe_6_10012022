@@ -2,7 +2,7 @@
  * récupération des données photographes et médias par les fetch
  */
 
-const fetchPhotographers = async () => {
+export const fetchPhotographers = async () => {
   await fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => (photographers = data.photographers));
@@ -10,7 +10,7 @@ const fetchPhotographers = async () => {
   // console.log(photographers);
 };
 
-const fetchMedias = async () => {
+export const fetchMedias = async () => {
   await fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
