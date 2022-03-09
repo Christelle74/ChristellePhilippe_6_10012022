@@ -1,8 +1,11 @@
+/*global fetchMedias, fetchPhotographers*/
+/*eslint no-undef: "error"*/
+
 /**
  * récupération des données photographes et médias par les fetch
  */
 
-export const fetchPhotographers = async () => {
+const fetchPhotographers = async () => {
   await fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => (photographers = data.photographers));
@@ -10,7 +13,7 @@ export const fetchPhotographers = async () => {
   // console.log(photographers);
 };
 
-export const fetchMedias = async () => {
+const fetchMedias = async () => {
   await fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => {

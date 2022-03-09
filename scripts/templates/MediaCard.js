@@ -1,9 +1,8 @@
 import { likesIncrement } from "../utils/likes.js";
 import { Lightbox } from "../utils/lightbox.js";
 import { MediaFactory } from "../factories/media.js";
-import { fetchMedias } from "../api/fetchApi";
 
-/*global medias*/
+/*global medias, fetchMedias*/
 /*eslint no-undef: "error"*/
 
 /**
