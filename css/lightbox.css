@@ -5,7 +5,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #e5e5e5;
+  background-color: white;
   z-index: 10;
   animation: lightboxIn 0.5s;
   transition: opacity 0.3s;

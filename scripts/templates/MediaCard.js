@@ -4,7 +4,6 @@ import { MediaFactory } from "../factories/media.js";
 
 /*global medias, fetchMedias*/
 /*eslint no-undef: "error"*/
-
 /**
  * création de la galerie photos et gestion des likes, du tri et de la lightbox
  *  (gallery) récupération des medias via l'appel de la fetch et filtre par photographe + appel de displayGallery et mediaSort(tri)

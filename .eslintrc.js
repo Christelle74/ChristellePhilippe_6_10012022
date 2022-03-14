@@ -1,6 +1,7 @@
 module.exports = {
   root: true,
   env: {
+    node: true,
     browser: true,
     es2021: true,
   },
@@ -9,5 +10,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  rules: {},
+  rules: {
+    "no-unused-vars": "off",
+  },
 };

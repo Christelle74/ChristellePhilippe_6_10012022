@@ -1,6 +1,5 @@
 /*global photographers, fetchPhotographers*/
 /*eslint no-undef: "error"*/
-
 /**
  *  page du profil du photographe, on récupère  les données media du photographe en appelant la fetch
  * dispatching des données (map)
